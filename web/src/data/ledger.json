@@ -3,25 +3,25 @@
   "name": "Leads per week",
   "value": "3,200",
   "status": "assumed scale",
-  "note": "Used to size the synthetic operation, nothing else."
+  "note": "Sizes the synthetic operation, nothing else."
  },
  {
   "name": "Quotes per week",
   "value": "1,100",
   "status": "assumed scale",
-  "note": "Calibration target for the synthetic funnel."
+  "note": "Target for the synthetic funnel."
  },
  {
   "name": "Issued policies per week",
   "value": "40",
   "status": "assumed scale",
-  "note": "Calibration target. No issue dates: no cohort can be built from it."
+  "note": "Target for the synthetic funnel. A weekly count, not a cohort."
  },
  {
   "name": "Collected policies per week",
   "value": "3",
   "status": "assumed scale",
-  "note": "Calibration target for a RATE; each synthetic week draws its own count."
+  "note": "Target for a RATE; each synthetic week draws its own count."
  },
  {
   "name": "Ad spend per week",
@@ -38,8 +38,8 @@
  {
   "name": "Three centers dial the same leads; an AI voice agent takes overflow",
   "value": "",
-  "status": "assumed scale",
-  "note": "Modelled as stated."
+  "status": "assumed",
+  "note": "The structure of the synthetic operation."
  },
  {
   "name": "Center hourly rates",
@@ -51,7 +51,7 @@
   "name": "Contact, quote, issue and collection probabilities",
   "value": "see truth.json",
   "status": "assumed",
-  "note": "Tuned to land near the assumed counts."
+  "note": "Tuned to land near the assumed weekly counts."
  },
  {
   "name": "Hour-of-day response curve",
@@ -75,7 +75,7 @@
   "name": "Payment delays, cancellations, cohort maturity",
   "value": "",
   "status": "not identified",
-  "note": "Not modelled; the synthetic lag is fixed."
+  "note": "Not modelled: in this simulation a first payment is known at issue."
  },
  {
   "name": "Fees, retained revenue, who pays which cost",

@@ -123,12 +123,14 @@ def decision_record(own):
             eligible_but_untreated="logged with reason (no consent, outside contact window, duplicate)",
             approval="operations director", exposure="owner field honoured by every center's dialer",
             dialer_acknowledgement="per-dial check that the dialing center is the owner",
-            stop_conditions=["leads reached per lead falls below current by more than 5% at week 2",
+            stop_conditions=["one interim look at week 4, on leads matured by then (arrived in weeks 1 and 2): stop if "
+                             "leads reached per lead is below current at the 1% level",
                              "any center dials outside the permitted window"],
         ),
         evaluation=dict(
             outcome_horizon="contact and quote: 14 days after lead creation; first payment: when mature",
-            maturity_rule="a lead counts once 14 days have passed; a policy once its first due date has passed",
+            maturity_rule=("a lead counts once 14 days have passed. On real data a policy counts once its first due date "
+                           "has passed; in this simulation the first payment is known at issue."),
             cost_definition="agent minutes per lead, from dialer handle time",
             review_after_weeks=A.REVIEW_WEEKS, reversal_criterion="interval on leads reached per lead entirely below 1",
             observed_result=None, counterfactual_estimate=None,
@@ -152,12 +154,23 @@ def main(bench_path: str | None = None):
         L = lead_table(exp)
         per_world[name] = dict(history_status=d_hist["status"], history_naive=d_hist["naive"],
                                experiment=dict(status=d_exp["status"], naive=d_exp["naive"], estimates=d_exp["estimates"],
+                                               guardrail=d_exp["guardrail"], sample_ratio_p=d_exp["sample_ratio_p"],
+                                               collected=dict(owner=int(L.loc[L.single_owner & L.mature, "collected"].sum()),
+                                                              current=int(L.loc[~L.single_owner & L.mature, "collected"].sum())),
                                                why=d_exp["why"], minutes=d_exp["agent_minutes_per_lead"],
-                                               arms=dict(owner=dict(leads=int(L.single_owner.sum()),
-                                                                    reached=int(L.loc[L.single_owner, "contacted"].sum())),
-                                                         current=dict(leads=int((~L.single_owner).sum()),
-                                                                      reached=int(L.loc[~L.single_owner, "contacted"].sum())))))
+                                               arms=dict(owner=int((L.single_owner & L.mature).sum()), current=int((~L.single_owner & L.mature).sum()))))
     hist_view = decide_ownership(base_logs)
+    # how much a weekly switchback still shares agents: calls made outside the lead's arrival week
+    sb, _ = simulate(WEEKS, PUBLISHED_SEED, Policy(ownership="switchback"), WORLDS["harm"])
+    at = sb["attempts"][sb["attempts"].handler != "AI"]
+    lw = sb["leads"].set_index("lead_id")
+    call_week = (at.t_min // (7 * 1440)).astype(int)
+    arr_week = lw.week.reindex(at.lead_id).to_numpy()
+    owned = lw.single_owner.reindex(at.lead_id).to_numpy()
+    treated = set(sb["design"]["ownership"]["treated_weeks"])
+    in_control = ~call_week.isin(treated) & (call_week < WEEKS)
+    switchback = dict(calls_outside_arrival_week=float((call_week.to_numpy() != arr_week).mean()),
+                      control_week_calls_on_owner_leads=float(owned[in_control.to_numpy()].mean()))
     if bench_path:
         with open(bench_path) as f:
             bench = json.load(f)
@@ -169,7 +182,7 @@ def main(bench_path: str | None = None):
                   assumed_scale=T.ASSUMED_SCALE, synthetic_week=weekly_totals(base_logs)),
         hashes=hashes, identical=len(set(hashes.values())) == 1,
         history=hist_view["history"], history_why=hist_view["why"], tapes=tapes(base_logs),
-        worlds=per_world,
+        worlds=per_world, switchback=switchback,
     )
     _dump(os.path.join(WEB_DATA, "demo.json"), demo)
     _dump(os.path.join(WEB_DATA, "bench.json"), bench)
@@ -178,6 +191,7 @@ def main(bench_path: str | None = None):
     _dump(os.path.join(WEB_DATA, "decision_record.json"), decision_record(hist_view))
     _dump(os.path.join(ROOT, "web", "public", "decision_record.json"), decision_record(hist_view))
     _dump(os.path.join(WEB_DATA, "truth.json"), {k: getattr(T, k) for k in dir(T) if k.isupper()})
+    _dump(os.path.join(ROOT, "web", "public", "truth.json"), {k: getattr(T, k) for k in dir(T) if k.isupper()})
     os.makedirs(DATA, exist_ok=True)
     for name in ["leads", "attempts", "policies", "staffing", "spend", "agents"]:
         base_logs[name].to_csv(os.path.join(DATA, f"history_{name}.csv.gz"), index=False, compression="gzip")

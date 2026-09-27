@@ -3,7 +3,7 @@
   "seed": 2026,
   "weeks": 8,
   "built_at": "2026-09-27",
-  "assumed scale": {
+  "assumed_scale": {
    "leads": 3200,
    "quotes": 1100,
    "issued": 40,
@@ -46,7 +46,7 @@
    "events0": 4122.0
   }
  },
- "history_why": "Every lead in these logs ran under one policy. The drop after an overlap fits two stories with opposite decisions: the overlap annoys the lead, or cooling leads draw overlaps and the second dial is a real extra chance. Nothing in the logs separates them.",
+ "history_why": "By rule: every lead in these logs ran under one policy, so no comparison exists. The drop after an overlap fits two stories with opposite decisions: the overlap annoys the lead, or cooling leads draw overlaps and the second dial is a real extra chance. Nothing in the logs separates them.",
  "tapes": [
   {
    "lead_id": 7129,
@@ -274,7 +274,7 @@
    "history_status": "test only",
    "history_naive": "roll out with review",
    "experiment": {
-    "status": "roll out with review",
+    "status": "not yet",
     "naive": "roll out with review",
     "estimates": {
      "contacted": {
@@ -318,20 +318,20 @@
       "events0": 4743.0
      }
     },
-    "why": "Leads under a single owner are reached more often, and the extra contacts quote as often as the others.",
+    "guardrail": "collections",
+    "sample_ratio_p": 0.014768,
+    "collected": {
+     "owner": 7,
+     "current": 21
+    },
+    "why": "Leads under a single owner are reached more often, but collected payments fell, with an interval entirely below 1. The guardrail holds the rollout until the collections are explained.",
     "minutes": {
      "False": 16.872055,
      "True": 17.143732
     },
     "arms": {
-     "owner": {
-      "leads": 12636,
-      "reached": 7283
-     },
-     "current": {
-      "leads": 13054,
-      "reached": 7186
-     }
+     "owner": 12405,
+     "current": 12793
     }
    }
   },
@@ -383,20 +383,20 @@
       "events0": 4770.0
      }
     },
+    "guardrail": null,
+    "sample_ratio_p": 0.013643,
+    "collected": {
+     "owner": 11,
+     "current": 12
+    },
     "why": "The comparison is valid but the difference is still inside the noise.",
     "minutes": {
      "False": 16.858522,
      "True": 16.737409
     },
     "arms": {
-     "owner": {
-      "leads": 12636,
-      "reached": 6884
-     },
-     "current": {
-      "leads": 13054,
-      "reached": 7204
-     }
+     "owner": 12433,
+     "current": 12826
     }
    }
   },
@@ -448,22 +448,26 @@
       "events0": 4675.0
      }
     },
+    "guardrail": null,
+    "sample_ratio_p": 0.01552,
+    "collected": {
+     "owner": 11,
+     "current": 13
+    },
     "why": "The comparison is valid but the difference is still inside the noise.",
     "minutes": {
      "False": 16.779158,
      "True": 16.628394
     },
     "arms": {
-     "owner": {
-      "leads": 12636,
-      "reached": 6724
-     },
-     "current": {
-      "leads": 13054,
-      "reached": 7099
-     }
+     "owner": 12397,
+     "current": 12782
     }
    }
   }
+ },
+ "switchback": {
+  "calls_outside_arrival_week": 0.559441,
+  "control_week_calls_on_owner_leads": 0.287324
  }
 }

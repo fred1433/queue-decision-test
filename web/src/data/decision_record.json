@@ -26,13 +26,13 @@
   "exposure": "owner field honoured by every center's dialer",
   "dialer_acknowledgement": "per-dial check that the dialing center is the owner",
   "stop_conditions": [
-   "leads reached per lead falls below current by more than 5% at week 2",
+   "one interim look at week 4, on leads matured by then (arrived in weeks 1 and 2): stop if leads reached per lead is below current at the 1% level",
    "any center dials outside the permitted window"
   ]
  },
  "evaluation": {
   "outcome_horizon": "contact and quote: 14 days after lead creation; first payment: when mature",
-  "maturity_rule": "a lead counts once 14 days have passed; a policy once its first due date has passed",
+  "maturity_rule": "a lead counts once 14 days have passed. On real data a policy counts once its first due date has passed; in this simulation the first payment is known at issue.",
   "cost_definition": "agent minutes per lead, from dialer handle time",
   "review_after_weeks": 4,
   "reversal_criterion": "interval on leads reached per lead entirely below 1",

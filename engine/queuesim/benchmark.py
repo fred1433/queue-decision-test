@@ -138,6 +138,8 @@ def run(n_reps=40, n_oracle=30, workers=8, seed0=20_000, durations=(4, 8, 16), n
             p, lo, hi = wilson(k, n)
             return dict(k=k, n=n, rate=p, lo=lo, hi=hi)
 
+        metric = "quotes" if which == "ownership" else "collected"
+        harmful_world = tr[metric]["hi"] < 0   # harmful only when the oracle interval sits below zero
         best = max(value, 0.0)
 
         def loss(chooser):
@@ -152,8 +154,9 @@ def run(n_reps=40, n_oracle=30, workers=8, seed0=20_000, durations=(4, 8, 16), n
                         abstain=rate(lambda r: r["status"] in ABSTAIN),
                         statuses={s: sum(1 for r in rs if r["status"] == s) for s in sorted({r["status"] for r in rs})}),
             naive=dict(rollout=rate(lambda r: r["naive"] == SHIP)),
-            harmful_recommendation=dict(engine=rate(lambda r: r["status"] == SHIP and value < 0),
-                                        naive=rate(lambda r: r["naive"] == SHIP and value < 0)),
+            harmful_world=harmful_world,
+            harmful_recommendation=dict(engine=rate(lambda r: r["status"] == SHIP and harmful_world),
+                                        naive=rate(lambda r: r["naive"] == SHIP and harmful_world)),
             coverage=dict(rate=cov, n=len(covered), estimand="contacted leads, full rollout" if which == "ownership" else "collected, full rollout"),
             loss=dict(engine=loss(lambda r: r["status"]), hold=loss(lambda r: "keep current"), naive=loss(lambda r: r["naive"]),
                       unit=unit),

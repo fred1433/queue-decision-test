@@ -69,7 +69,9 @@ def tapes(logs, n=5):
     leads = logs["leads"].set_index("lead_id")
     cand = []
     for lid, g in a[a.lead_id.isin(ov.lead_id.unique())].groupby("lead_id"):
-        if 5 <= len(g) <= 9 and leads.loc[lid, "week"] == 2:
+        arr = leads.loc[lid, "arrival_min"]
+        day = (arr - 2 * 7 * 1440) / 1440
+        if 5 <= len(g) <= 9 and 0 <= day < 3 and (g.t_min.max() - 2 * 7 * 1440) < 14 * 1440:
             cand.append(lid)
     rng = np.random.default_rng(7)
     pick = sorted(rng.choice(cand, size=min(n, len(cand)), replace=False).tolist())
@@ -78,7 +80,7 @@ def tapes(logs, n=5):
         g = a[a.lead_id == lid].sort_values("t_min")
         t0 = leads.loc[lid, "arrival_min"]
         out.append(dict(lead_id=int(lid), source=leads.loc[lid, "source"],
-                        arrival_min=int(t0),
+                        arrival_min=int(t0), week_start_min=2 * 7 * 1440,
                         dials=[dict(h=round((r.t_min - t0) / 60, 3), center=r.handler, outcome=r.outcome,
                                     overlap=bool(r.Index in ov.index)) for r in g.itertuples()]))
     return out

@@ -84,3 +84,26 @@ def test_immature_leads_are_not_read():
     d = decide_ownership(logs)
     n = d["estimates"]["contacted"]["events1"] + d["estimates"]["contacted"]["events0"]
     assert n < 0.85 * (logs["attempts"].lead_id.nunique())
+
+
+def test_collection_guardrail_holds_a_rollout():
+    logs = make_logs(20000, 0.60, 0.50)
+    L = logs["leads"]
+    owners = L.lead_id[L.single_owner].to_numpy()[:40]
+    others = L.lead_id[~L.single_owner].to_numpy()[:200]
+    ids = list(owners) + list(others)
+    logs["policies"] = pd.DataFrame(dict(lead_id=ids, handler="A", issued_min=0, premium_annual_mxn=9000.0,
+                                         payment_on_call=False, first_payment_collected=True))
+    d = decide_ownership(logs)
+    assert d["estimates"]["contacted"]["lo"] > 1
+    assert d["guardrail"] == "collections" and d["status"] == "not yet"
+
+
+def test_sample_ratio_mismatch_is_inadequate():
+    logs = make_logs(20000, 0.60, 0.50)
+    L = logs["leads"]
+    drop = L.index[L.single_owner][:1500]
+    logs["leads"] = L.drop(drop).reset_index(drop=True)
+    logs["design"]["ownership"] = dict(kind="lead_random", share=0.5)
+    d = decide_ownership(logs)
+    assert d["status"] == "comparison inadequate" and d["sample_ratio_p"] < 0.001

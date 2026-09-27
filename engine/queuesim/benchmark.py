@@ -4,11 +4,13 @@ Cases (each one a world the decision code never sees, and a design it does see i
   beneficial, no effect, harmful          three worlds with identical history under the current policy
   history only                            the same three worlds, no experiment: must not decide
   inadequate comparison                   ownership switched on at a date while leads drift
-  switchback                              whole weeks alternate, in the beneficial and harmful worlds
+  switchback                              weeks alternate by lead arrival (retries still cross weeks)
   proxy reversal                          a closing script that lifts quotes and cuts collections
   proxy agreement                         a closing script that lifts both (the price of the rule above)
-  held-out mechanisms                     harm that wears off; overlaps that land on hard-to-reach leads;
-                                          tighter capacity. Added after the decision code was frozen.
+  harder mechanisms                       harm that wears off; overlaps that land on hard-to-reach leads;
+                                          tighter capacity. Written with the bench, before its first run; no
+                                          threshold of the decision code was set on them. They are not an
+                                          independent hold-out: the code changed after runs that included them.
 
 For each case: the true effect of a full rollout comes from oracle runs of the same world under both
 policies (never from the parameters), and every replication is decided three ways: by the decision
@@ -35,7 +37,7 @@ RESCUE = World("rescue", "rescue")
 CASES = [
     # id, label, group, world, policy kwargs, decision ("ownership" | "script")
     ("beneficial", "Beneficial: overlaps annoy leads", "main", HARM, dict(ownership="lead_random"), "ownership"),
-    ("no_effect", "No effect: the owner makes the same dial", "main", NEUTRAL, dict(ownership="lead_random"), "ownership"),
+    ("no_effect", "No quote effect: the owner makes the dial", "main", NEUTRAL, dict(ownership="lead_random"), "ownership"),
     ("harmful", "Harmful: the second dial was a real chance", "main", RESCUE, dict(ownership="lead_random"), "ownership"),
     ("history_beneficial", "History only, beneficial world", "history", HARM, dict(ownership="off"), "ownership"),
     ("history_no_effect", "History only, no-effect world", "history", NEUTRAL, dict(ownership="off"), "ownership"),
@@ -48,11 +50,11 @@ CASES = [
      World("script_reversal", script=(1.15, 1.10, 0.45)), dict(script_share=0.5), "script"),
     ("proxy_agreement", "Closing script: more quotes, more collections", "proxy",
      World("script_gain", script=(1.12, 1.0, 1.0)), dict(script_share=0.5), "script"),
-    ("heldout_wears_off", "Held out: the annoyance wears off after a day", "heldout",
+    ("heldout_wears_off", "Annoyance that wears off after a day", "heldout",
      World("harm_wears_off", "harm", burn_hours=24), dict(ownership="lead_random"), "ownership"),
-    ("heldout_on_reach", "Held out: overlaps land on hard-to-reach leads", "heldout",
+    ("heldout_on_reach", "Overlaps land on hard-to-reach leads (harmful)", "heldout",
      World("rescue_on_reach", "rescue", overlap_on_reach=True), dict(ownership="lead_random"), "ownership"),
-    ("heldout_tight", "Held out: 15% fewer agents, arms compete harder", "heldout",
+    ("heldout_tight", "15% fewer agents, arms compete harder", "heldout",
      World("harm_tight", "harm", staffing_scale=0.85), dict(ownership="lead_random"), "ownership"),
 ]
 

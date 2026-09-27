@@ -17,3 +17,6 @@ HORIZON_WEEKS = 104
 # Maturity rule: a lead is read once this many days have passed since it arrived (the last dial in
 # the logs stands in for "now").
 MATURITY_DAYS = 14
+
+# Sample ratio check: arms whose sizes differ from the design at this significance are not read.
+SRM_ALPHA = 0.001

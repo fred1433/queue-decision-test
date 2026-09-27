@@ -127,8 +127,9 @@ def decide_ownership(logs) -> dict:
     base = dict(decision="Single next-contact owner per lead, across the three centers", design=design, history=ov)
 
     if kind in ("off", "all"):
+        # By rule, not by measurement: with one policy in the logs no comparison exists, so no data is read.
         return dict(base, status="test only",
-                    why="Every lead in these logs ran under one policy. The drop after an overlap fits two stories with "
+                    why="By rule: every lead in these logs ran under one policy, so no comparison exists. The drop after an overlap fits two stories with "
                         "opposite decisions: the overlap annoys the lead, or cooling leads draw overlaps and the second "
                         "dial is a real extra chance. Nothing in the logs separates them.",
                     naive=naive_history_rule(ov), estimates={})
@@ -153,26 +154,41 @@ def decide_ownership(logs) -> dict:
     elif kind == "switchback":
         est = {o: _switchback(L, o) for o in ["contacted", "quoted", "issued", "collected"]}
         est["quoted_per_contacted"] = _switchback(L[L.contacted], "quoted")
-        interference = "Whole weeks switch together, so the arms do not compete for agents."
+        interference = ("Weeks alternate by lead arrival. Retries run into the next week, so the arms still share agents "
+                        "and carry over, less than under a lead split.")
     else:
         raise ValueError(kind)
 
     minutes = {str(k): float(v) for k, v in L.groupby("single_owner").agent_min.mean().items()}
-    c, q, qc = est["contacted"], est["quoted"], est["quoted_per_contacted"]
-    if c["lo"] > 1 and q["rr"] > 1 and qc["lo"] > A.NONINFERIORITY:
+    # sample ratio check: are the arms the size the logged design says they should be?
+    share = float(design.get("share", 0.5)) if kind == "lead_random" else None
+    srm_p = (float(sps.binomtest(int(L.single_owner.sum()), len(L), share).pvalue) if share is not None else None)
+    c, q, qc, col = est["contacted"], est["quoted"], est["quoted_per_contacted"], est["collected"]
+    guard = None
+    if srm_p is not None and srm_p < A.SRM_ALPHA:
+        status = "comparison inadequate"
+        guard = "sample ratio"
+    elif c["lo"] > 1 and q["rr"] > 1 and qc["lo"] > A.NONINFERIORITY:
         status = "roll out with review"
+        if np.isfinite(col["hi"]) and col["hi"] < 1:
+            status = "not yet"
+            guard = "collections"
     elif c["hi"] < 1 or q["hi"] < 1:
         status = "keep current"
     else:
         status = "not yet"
     obs1 = L.loc[L.single_owner, "contacted"].mean()
     obs0 = L.loc[~L.single_owner, "contacted"].mean()
-    return dict(base, status=status,
-                why={"roll out with review": "Leads under a single owner are reached more often, and the extra contacts "
-                                             "quote as often as the others.",
-                     "keep current": "Leads under a single owner are reached less often: the other centers' dials were "
-                                     "doing real work.",
-                     "not yet": "The comparison is valid but the difference is still inside the noise."}[status],
+    why = {"roll out with review": "Leads under a single owner are reached more often, the extra contacts quote as often "
+                                   "as the others, and collected payments show no significant drop.",
+           "keep current": "Leads under a single owner are reached less often: the other centers' dials were "
+                           "doing real work.",
+           "not yet": "The comparison is valid but the difference is still inside the noise.",
+           "comparison inadequate": "The arms are not the size the design says: assignment or logging is broken."}[status]
+    if guard == "collections":
+        why = ("Leads under a single owner are reached more often, but collected payments fell, with an interval "
+               "entirely below 1. The guardrail holds the rollout until the collections are explained.")
+    return dict(base, status=status, why=why, guardrail=guard, sample_ratio_p=srm_p,
                 naive="roll out with review" if obs1 > obs0 else "keep current",
                 estimates=est, agent_minutes_per_lead=minutes, interference=interference)
 

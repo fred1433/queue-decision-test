@@ -88,19 +88,19 @@ def tapes(logs, n=5):
 
 LEDGER = [
     # name, value, status, note
-    ("Leads per week", "3,200", "assumed scale", "Used to size the synthetic operation, nothing else."),
-    ("Quotes per week", "1,100", "assumed scale", "Calibration target for the synthetic funnel."),
-    ("Issued policies per week", "40", "assumed scale", "Calibration target. No issue dates: no cohort can be built from it."),
-    ("Collected policies per week", "3", "assumed scale", "Calibration target for a RATE; each synthetic week draws its own count."),
+    ("Leads per week", "3,200", "assumed scale", "Sizes the synthetic operation, nothing else."),
+    ("Quotes per week", "1,100", "assumed scale", "Target for the synthetic funnel."),
+    ("Issued policies per week", "40", "assumed scale", "Target for the synthetic funnel. A weekly count, not a cohort."),
+    ("Collected policies per week", "3", "assumed scale", "Target for a RATE; each synthetic week draws its own count."),
     ("Ad spend per week", "164,000 MXN", "assumed scale", "Split between Meta and Google by us."),
     ("Call center cost per week", "234,000 MXN", "assumed scale", "Split between three centers at hourly rates set by us."),
-    ("Three centers dial the same leads; an AI voice agent takes overflow", "", "assumed scale", "Modelled as stated."),
+    ("Three centers dial the same leads; an AI voice agent takes overflow", "", "assumed", "The structure of the synthetic operation."),
     ("Center hourly rates", "165 / 135 / 110 MXN", "assumed", "Chosen so the three add up to the assumed total."),
-    ("Contact, quote, issue and collection probabilities", "see truth.json", "assumed", "Tuned to land near the assumed counts."),
+    ("Contact, quote, issue and collection probabilities", "see truth.json", "assumed", "Tuned to land near the assumed weekly counts."),
     ("Hour-of-day response curve", "see truth.json", "assumed", "People answer more after work."),
     ("Overlap rate between centers", f"{T.COLLISION_PROB:.0%} of dials", "assumed", "How often a second center dials within minutes."),
     ("What an overlap does to the lead", "three worlds", "not identified", "The subject of the test: history cannot tell."),
-    ("Payment delays, cancellations, cohort maturity", "", "not identified", "Not modelled; the synthetic lag is fixed."),
+    ("Payment delays, cancellations, cohort maturity", "", "not identified", "Not modelled: in this simulation a first payment is known at issue."),
     ("Fees, retained revenue, who pays which cost", "", "not identified", "Left out on purpose: no margin is computed."),
     ("Premium amounts", "lognormal by source", "assumed", "Only used to fill the policy table."),
 ]
@@ -166,7 +166,7 @@ def main(bench_path: str | None = None):
         bench = run()
     demo = dict(
         meta=dict(seed=PUBLISHED_SEED, weeks=WEEKS, built_at=time.strftime("%Y-%m-%d"),
-                  assumed_scale=T.CALIBRATION_WEEK, synthetic_week=weekly_totals(base_logs)),
+                  assumed_scale=T.ASSUMED_SCALE, synthetic_week=weekly_totals(base_logs)),
         hashes=hashes, identical=len(set(hashes.values())) == 1,
         history=hist_view["history"], history_why=hist_view["why"], tapes=tapes(base_logs),
         worlds=per_world,

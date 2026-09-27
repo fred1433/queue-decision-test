@@ -26,7 +26,7 @@ def weeks_needed(p0: float, rel: float, leads_per_week: float, share: float = 0.
 
 
 def scale_ratio_table(leads_per_week: float = 3200, collected: float = 3) -> list[dict]:
-    """The assumed scale's ratio, read as if it were a mature lead-to-collection probability."""
+    """The assumed scale's ratio (3 collected per 3,200 leads), read as if it were a mature per-lead probability."""
     p0 = collected / leads_per_week
     return [dict(relative=r, p1=p0 * (1 + r), weeks=weeks_needed(p0, r, leads_per_week),
                  total_leads=weeks_needed(p0, r, leads_per_week) * leads_per_week)

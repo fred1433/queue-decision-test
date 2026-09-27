@@ -1,4 +1,4 @@
-"""A synthetic insurance sales operation, scaled to an assumed scale.
+"""A synthetic insurance sales operation at an assumed scale.
 
 `simulate(weeks, seed, policy, world)` returns:
   - `logs`: the tables an operation like this keeps (leads with their logged assignment, attempts,
@@ -55,7 +55,7 @@ class Policy:
     ownership_from_week: int = 4
     # a new closing script: share of leads that get it (0.5 = a test, 1.0 = everyone)
     script_share: float = 0.0
-    leads_per_week: int = T.CALIBRATION_WEEK["leads"]
+    leads_per_week: int = T.ASSUMED_SCALE["leads"]
 
 
 def _agents(rng):

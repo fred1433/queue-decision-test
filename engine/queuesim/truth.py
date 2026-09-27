@@ -1,15 +1,11 @@
 """The hidden truth of the simulated operation.
 
-The simulator reads this file. The decision engine never does (tests/test_isolation.py enforces it):
-the engine sees only the logs an operation like this one keeps. Every number here is either
-assumed; the weekly scale is the target the funnel was tuned to land near.
-
-The calibration week: 3,200 leads, 1,100 quotes, 40 issued policies, 3 collected;
-ad spend 164,000 MXN; call center cost 234,000 MXN; three call centers with different hourly
-rates dialing the same leads; an AI voice agent taking overflow.
+The simulator reads this file. The decision code never does (tests/test_isolation.py checks the imports):
+it sees only the logs an operation like this one keeps. Every number here is assumed; the weekly scale
+below is the target the funnel was tuned to land near.
 """
 
-CALIBRATION_WEEK = {
+ASSUMED_SCALE = {
     "leads": 3200,
     "quotes": 1100,
     "issued": 40,

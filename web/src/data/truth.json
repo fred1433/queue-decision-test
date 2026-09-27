@@ -1,0 +1,192 @@
+{
+ "AGE_FLOOR": 0.55,
+ "AGE_TAU_MIN": 90.0,
+ "AI": {
+  "contact": 0.9,
+  "quote": 0.78,
+  "issue": 0.5,
+  "capture": 0.0,
+  "cost_per_min": 3.0
+ },
+ "AI_HANDLE_MIN": {
+  "no_answer": 0.8,
+  "contact": 3.5,
+  "quote": 9.0
+ },
+ "ARRIVAL_WEIGHTS": [
+  0.6,
+  0.4,
+  0.3,
+  0.2,
+  0.2,
+  0.3,
+  0.6,
+  1.0,
+  1.6,
+  2.2,
+  2.6,
+  2.9,
+  3.3,
+  3.4,
+  2.8,
+  2.4,
+  2.4,
+  2.7,
+  3.2,
+  3.8,
+  4.0,
+  3.4,
+  2.2,
+  1.2
+ ],
+ "ATTEMPT_FATIGUE": 0.92,
+ "BASE_CONTACT": 0.285,
+ "BASE_ISSUE": 0.033,
+ "BASE_QUOTE": 0.68,
+ "CALIBRATION_WEEK": {
+  "leads": 3200,
+  "quotes": 1100,
+  "issued": 40,
+  "collected": 3,
+  "ad_spend_mxn": 164000,
+  "call_center_cost_mxn": 234000
+ },
+ "CAPTURE_INTENT_POWER": 0.6,
+ "CENTERS": {
+  "A": {
+   "rate": 165.0,
+   "quote": 1.05,
+   "issue": 1.2,
+   "capture": 0.36,
+   "agents": 14
+  },
+  "B": {
+   "rate": 135.0,
+   "quote": 1.0,
+   "issue": 1.0,
+   "capture": 0.2,
+   "agents": 16
+  },
+  "C": {
+   "rate": 110.0,
+   "quote": 0.93,
+   "issue": 0.88,
+   "capture": 0.09,
+   "agents": 18
+  }
+ },
+ "CENTER_SPLIT": {
+  "A": 0.3,
+  "B": 0.33,
+  "C": 0.37
+ },
+ "COLLECT_IF_CAPTURED": 0.175,
+ "COLLECT_IF_LINK": 0.022,
+ "COLLECT_INTENT_POWER": 0.5,
+ "COLLISION_BURN": 0.55,
+ "COLLISION_PROB": 0.12,
+ "CONTACTABILITY_SHAPE": 1.6,
+ "DIAL_SHARE": 0.55,
+ "HANDLE_MIN": {
+  "no_answer": 1.4,
+  "contact": 6.0,
+  "quote": 22.0
+ },
+ "HOUR_CONTACT": {
+  "8": 0.74,
+  "9": 0.84,
+  "10": 0.88,
+  "11": 0.9,
+  "12": 0.93,
+  "13": 0.95,
+  "14": 0.9,
+  "15": 0.9,
+  "16": 0.96,
+  "17": 1.06,
+  "18": 1.22,
+  "19": 1.27,
+  "20": 1.16
+ },
+ "INTENT_SIGMA": 0.55,
+ "MAX_ATTEMPTS": 10,
+ "OCCUPANCY_CAP": 0.88,
+ "OPEN_DAYS": 6,
+ "PREMIUM_SIGMA": 0.45,
+ "PRIORITY": {
+  "google": 0,
+  "database": 1,
+  "meta": 2
+ },
+ "RETRY_GAPS_MIN": [
+  25,
+  120,
+  240,
+  1440,
+  1440,
+  2880,
+  2880,
+  2880,
+  4320
+ ],
+ "SCRIPT_EFFECT": 1.0,
+ "SLOTS": [
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20
+ ],
+ "SOURCES": {
+  "meta": {
+   "share": 0.55,
+   "cpl": 55.0,
+   "contact": 1.0,
+   "quote": 0.95,
+   "issue": 0.8,
+   "collect": 0.8,
+   "premium": 7800
+  },
+  "google": {
+   "share": 0.28,
+   "cpl": 75.0,
+   "contact": 1.1,
+   "quote": 1.1,
+   "issue": 1.35,
+   "collect": 1.05,
+   "premium": 9500
+  },
+  "database": {
+   "share": 0.17,
+   "cpl": 0.0,
+   "contact": 0.8,
+   "quote": 0.9,
+   "issue": 1.1,
+   "collect": 1.4,
+   "premium": 11000
+  }
+ },
+ "STAFFING": {
+  "8": 38,
+  "9": 31,
+  "10": 31,
+  "11": 30,
+  "12": 29,
+  "13": 22,
+  "14": 24,
+  "15": 23,
+  "16": 21,
+  "17": 17,
+  "18": 9,
+  "19": 7,
+  "20": 5
+ },
+ "TENURE_QUOTE_GAIN": 0.1
+}

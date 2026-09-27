@@ -1,0 +1,1908 @@
+{
+ "n_reps": 2,
+ "n_oracle": 2,
+ "weeks": 8,
+ "seconds": 127,
+ "truth": {
+  "harm|ownership": {
+   "contacted_leads": {
+    "mean": 80.8125,
+    "lo": 76.035,
+    "hi": 85.59,
+    "n": 2
+   },
+   "quotes": {
+    "mean": 53.3125,
+    "lo": 44.37,
+    "hi": 62.255,
+    "n": 2
+   },
+   "issued": {
+    "mean": 0.375,
+    "lo": -0.605,
+    "hi": 1.355,
+    "n": 2
+   },
+   "collected": {
+    "mean": -0.25,
+    "lo": -0.74,
+    "hi": 0.24,
+    "n": 2
+   },
+   "agent_minutes": {
+    "mean": 55.9625,
+    "lo": 40.552,
+    "hi": 71.373,
+    "n": 2
+   },
+   "contacted_rr": 1.049479,
+   "collected_rr": 0.914894
+  },
+  "neutral|ownership": {
+   "contacted_leads": {
+    "mean": 20.6875,
+    "lo": -1.975,
+    "hi": 43.35,
+    "n": 2
+   },
+   "quotes": {
+    "mean": 1.625,
+    "lo": -15.525,
+    "hi": 18.775,
+    "n": 2
+   },
+   "issued": {
+    "mean": -0.5625,
+    "lo": -5.34,
+    "hi": 4.215,
+    "n": 2
+   },
+   "collected": {
+    "mean": 1.125,
+    "lo": 0.635,
+    "hi": 1.615,
+    "n": 2
+   },
+   "agent_minutes": {
+    "mean": 7.6125,
+    "lo": -66.598,
+    "hi": 81.823,
+    "n": 2
+   },
+   "contacted_rr": 1.012671,
+   "collected_rr": 1.382979
+  },
+  "rescue|ownership": {
+   "contacted_leads": {
+    "mean": -29.8125,
+    "lo": -45.615,
+    "hi": -14.01,
+    "n": 2
+   },
+   "quotes": {
+    "mean": -24.375,
+    "lo": -28.05,
+    "hi": -20.7,
+    "n": 2
+   },
+   "issued": {
+    "mean": -1.0,
+    "lo": -3.205,
+    "hi": 1.205,
+    "n": 2
+   },
+   "collected": {
+    "mean": 0.3125,
+    "lo": -1.525,
+    "hi": 2.15,
+    "n": 2
+   },
+   "agent_minutes": {
+    "mean": -287.025,
+    "lo": -460.779,
+    "hi": -113.271,
+    "n": 2
+   },
+   "contacted_rr": 0.981751,
+   "collected_rr": 1.106383
+  },
+  "neutral_drift|ownership": {
+   "contacted_leads": {
+    "mean": 14.5,
+    "lo": 7.885,
+    "hi": 21.115,
+    "n": 2
+   },
+   "quotes": {
+    "mean": 4.8125,
+    "lo": -18.34,
+    "hi": 27.965,
+    "n": 2
+   },
+   "issued": {
+    "mean": 0.4375,
+    "lo": -2.38,
+    "hi": 3.255,
+    "n": 2
+   },
+   "collected": {
+    "mean": -0.8125,
+    "lo": -1.18,
+    "hi": -0.445,
+    "n": 2
+   },
+   "agent_minutes": {
+    "mean": -38.3,
+    "lo": -329.605,
+    "hi": 253.005,
+    "n": 2
+   },
+   "contacted_rr": 1.009681,
+   "collected_rr": 0.767857
+  },
+  "script_reversal|script": {
+   "contacted_leads": {
+    "mean": -21.125,
+    "lo": -30.19,
+    "hi": -12.06,
+    "n": 2
+   },
+   "quotes": {
+    "mean": 117.4375,
+    "lo": 112.415,
+    "hi": 122.46,
+    "n": 2
+   },
+   "issued": {
+    "mean": 8.5625,
+    "lo": 5.5,
+    "hi": 11.625,
+    "n": 2
+   },
+   "collected": {
+    "mean": -1.6875,
+    "lo": -2.3,
+    "hi": -1.075,
+    "n": 2
+   },
+   "agent_minutes": {
+    "mean": 483.475,
+    "lo": 467.648,
+    "hi": 499.302,
+    "n": 2
+   },
+   "contacted_rr": 0.987068,
+   "collected_rr": 0.425532
+  },
+  "script_gain|script": {
+   "contacted_leads": {
+    "mean": -10.25,
+    "lo": -24.95,
+    "hi": 4.45,
+    "n": 2
+   },
+   "quotes": {
+    "mean": 95.25,
+    "lo": 69.28,
+    "hi": 121.22,
+    "n": 2
+   },
+   "issued": {
+    "mean": 4.4375,
+    "lo": 0.15,
+    "hi": 8.725,
+    "n": 2
+   },
+   "collected": {
+    "mean": 0.125,
+    "lo": -0.855,
+    "hi": 1.105,
+    "n": 2
+   },
+   "agent_minutes": {
+    "mean": 423.8125,
+    "lo": 344.31,
+    "hi": 503.315,
+    "n": 2
+   },
+   "contacted_rr": 0.993728,
+   "collected_rr": 1.042553
+  },
+  "harm_wears_off|ownership": {
+   "contacted_leads": {
+    "mean": -9.3125,
+    "lo": -16.295,
+    "hi": -2.33,
+    "n": 2
+   },
+   "quotes": {
+    "mean": 1.0625,
+    "lo": -15.475,
+    "hi": 17.6,
+    "n": 2
+   },
+   "issued": {
+    "mean": -3.375,
+    "lo": -6.07,
+    "hi": -0.68,
+    "n": 2
+   },
+   "collected": {
+    "mean": -0.1875,
+    "lo": -1.045,
+    "hi": 0.67,
+    "n": 2
+   },
+   "agent_minutes": {
+    "mean": -182.125,
+    "lo": -201.431,
+    "hi": -162.819,
+    "n": 2
+   },
+   "contacted_rr": 0.994595,
+   "collected_rr": 0.934783
+  },
+  "rescue_on_reach|ownership": {
+   "contacted_leads": {
+    "mean": -35.125,
+    "lo": -53.01,
+    "hi": -17.24,
+    "n": 2
+   },
+   "quotes": {
+    "mean": -29.625,
+    "lo": -36.73,
+    "hi": -22.52,
+    "n": 2
+   },
+   "issued": {
+    "mean": -2.25,
+    "lo": -2.495,
+    "hi": -2.005,
+    "n": 2
+   },
+   "collected": {
+    "mean": -1.25,
+    "lo": -1.495,
+    "hi": -1.005,
+    "n": 2
+   },
+   "agent_minutes": {
+    "mean": -314.8,
+    "lo": -343.073,
+    "hi": -286.527,
+    "n": 2
+   },
+   "contacted_rr": 0.978815,
+   "collected_rr": 0.722222
+  },
+  "harm_tight|ownership": {
+   "contacted_leads": {
+    "mean": 57.8125,
+    "lo": 55.485,
+    "hi": 60.14,
+    "n": 2
+   },
+   "quotes": {
+    "mean": 44.8125,
+    "lo": 44.2,
+    "hi": 45.425,
+    "n": 2
+   },
+   "issued": {
+    "mean": 0.9375,
+    "lo": -4.575,
+    "hi": 6.45,
+    "n": 2
+   },
+   "collected": {
+    "mean": -1.25,
+    "lo": -2.23,
+    "hi": -0.27,
+    "n": 2
+   },
+   "agent_minutes": {
+    "mean": -6.35,
+    "lo": -72.794,
+    "hi": 60.094,
+    "n": 2
+   },
+   "contacted_rr": 1.038558,
+   "collected_rr": 0.677419
+  }
+ },
+ "cases": [
+  {
+   "id": "beneficial",
+   "label": "Beneficial: overlaps annoy leads",
+   "group": "main",
+   "decision": "ownership",
+   "world": "harm",
+   "design": {
+    "ownership": "lead_random"
+   },
+   "true_effect": {
+    "value": 53.3125,
+    "unit": "quotes per week",
+    "detail": {
+     "contacted_leads": {
+      "mean": 80.8125,
+      "lo": 76.035,
+      "hi": 85.59,
+      "n": 2
+     },
+     "quotes": {
+      "mean": 53.3125,
+      "lo": 44.37,
+      "hi": 62.255,
+      "n": 2
+     },
+     "issued": {
+      "mean": 0.375,
+      "lo": -0.605,
+      "hi": 1.355,
+      "n": 2
+     },
+     "collected": {
+      "mean": -0.25,
+      "lo": -0.74,
+      "hi": 0.24,
+      "n": 2
+     },
+     "agent_minutes": {
+      "mean": 55.9625,
+      "lo": 40.552,
+      "hi": 71.373,
+      "n": 2
+     },
+     "contacted_rr": 1.049479,
+     "collected_rr": 0.914894
+    },
+    "rr": 1.049479
+   },
+   "engine": {
+    "rollout": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    },
+    "keep": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "abstain": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "statuses": {
+     "roll out with review": 2
+    }
+   },
+   "naive": {
+    "rollout": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    }
+   },
+   "harmful_recommendation": {
+    "engine": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "naive": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "coverage": {
+    "rate": 1.0,
+    "n": 2,
+    "estimand": "contacted leads, full rollout"
+   },
+   "loss": {
+    "engine": 0.0,
+    "hold": 53.3125,
+    "naive": 0.0,
+    "unit": "quotes per week"
+   }
+  },
+  {
+   "id": "no_effect",
+   "label": "No effect: the owner makes the same dial",
+   "group": "main",
+   "decision": "ownership",
+   "world": "neutral",
+   "design": {
+    "ownership": "lead_random"
+   },
+   "true_effect": {
+    "value": 1.625,
+    "unit": "quotes per week",
+    "detail": {
+     "contacted_leads": {
+      "mean": 20.6875,
+      "lo": -1.975,
+      "hi": 43.35,
+      "n": 2
+     },
+     "quotes": {
+      "mean": 1.625,
+      "lo": -15.525,
+      "hi": 18.775,
+      "n": 2
+     },
+     "issued": {
+      "mean": -0.5625,
+      "lo": -5.34,
+      "hi": 4.215,
+      "n": 2
+     },
+     "collected": {
+      "mean": 1.125,
+      "lo": 0.635,
+      "hi": 1.615,
+      "n": 2
+     },
+     "agent_minutes": {
+      "mean": 7.6125,
+      "lo": -66.598,
+      "hi": 81.823,
+      "n": 2
+     },
+     "contacted_rr": 1.012671,
+     "collected_rr": 1.382979
+    },
+    "rr": 1.012671
+   },
+   "engine": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "keep": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "abstain": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    },
+    "statuses": {
+     "not yet": 2
+    }
+   },
+   "naive": {
+    "rollout": {
+     "k": 1,
+     "n": 2,
+     "rate": 0.5,
+     "lo": 0.094531,
+     "hi": 0.905469
+    }
+   },
+   "harmful_recommendation": {
+    "engine": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "naive": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "coverage": {
+    "rate": 1.0,
+    "n": 2,
+    "estimand": "contacted leads, full rollout"
+   },
+   "loss": {
+    "engine": 1.625,
+    "hold": 1.625,
+    "naive": 0.8125,
+    "unit": "quotes per week"
+   }
+  },
+  {
+   "id": "harmful",
+   "label": "Harmful: the second dial was a real chance",
+   "group": "main",
+   "decision": "ownership",
+   "world": "rescue",
+   "design": {
+    "ownership": "lead_random"
+   },
+   "true_effect": {
+    "value": -24.375,
+    "unit": "quotes per week",
+    "detail": {
+     "contacted_leads": {
+      "mean": -29.8125,
+      "lo": -45.615,
+      "hi": -14.01,
+      "n": 2
+     },
+     "quotes": {
+      "mean": -24.375,
+      "lo": -28.05,
+      "hi": -20.7,
+      "n": 2
+     },
+     "issued": {
+      "mean": -1.0,
+      "lo": -3.205,
+      "hi": 1.205,
+      "n": 2
+     },
+     "collected": {
+      "mean": 0.3125,
+      "lo": -1.525,
+      "hi": 2.15,
+      "n": 2
+     },
+     "agent_minutes": {
+      "mean": -287.025,
+      "lo": -460.779,
+      "hi": -113.271,
+      "n": 2
+     },
+     "contacted_rr": 0.981751,
+     "collected_rr": 1.106383
+    },
+    "rr": 0.981751
+   },
+   "engine": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "keep": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    },
+    "abstain": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "statuses": {
+     "keep current": 2
+    }
+   },
+   "naive": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "harmful_recommendation": {
+    "engine": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "naive": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "coverage": {
+    "rate": 0.5,
+    "n": 2,
+    "estimand": "contacted leads, full rollout"
+   },
+   "loss": {
+    "engine": 0.0,
+    "hold": 0.0,
+    "naive": 0.0,
+    "unit": "quotes per week"
+   }
+  },
+  {
+   "id": "history_beneficial",
+   "label": "History only, beneficial world",
+   "group": "history",
+   "decision": "ownership",
+   "world": "harm",
+   "design": {
+    "ownership": "off"
+   },
+   "true_effect": {
+    "value": 53.3125,
+    "unit": "quotes per week",
+    "detail": {
+     "contacted_leads": {
+      "mean": 80.8125,
+      "lo": 76.035,
+      "hi": 85.59,
+      "n": 2
+     },
+     "quotes": {
+      "mean": 53.3125,
+      "lo": 44.37,
+      "hi": 62.255,
+      "n": 2
+     },
+     "issued": {
+      "mean": 0.375,
+      "lo": -0.605,
+      "hi": 1.355,
+      "n": 2
+     },
+     "collected": {
+      "mean": -0.25,
+      "lo": -0.74,
+      "hi": 0.24,
+      "n": 2
+     },
+     "agent_minutes": {
+      "mean": 55.9625,
+      "lo": 40.552,
+      "hi": 71.373,
+      "n": 2
+     },
+     "contacted_rr": 1.049479,
+     "collected_rr": 0.914894
+    },
+    "rr": 1.049479
+   },
+   "engine": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "keep": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "abstain": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    },
+    "statuses": {
+     "test only": 2
+    }
+   },
+   "naive": {
+    "rollout": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    }
+   },
+   "harmful_recommendation": {
+    "engine": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "naive": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "coverage": {
+    "rate": null,
+    "n": 0,
+    "estimand": "contacted leads, full rollout"
+   },
+   "loss": {
+    "engine": 53.3125,
+    "hold": 53.3125,
+    "naive": 0.0,
+    "unit": "quotes per week"
+   }
+  },
+  {
+   "id": "history_no_effect",
+   "label": "History only, no-effect world",
+   "group": "history",
+   "decision": "ownership",
+   "world": "neutral",
+   "design": {
+    "ownership": "off"
+   },
+   "true_effect": {
+    "value": 1.625,
+    "unit": "quotes per week",
+    "detail": {
+     "contacted_leads": {
+      "mean": 20.6875,
+      "lo": -1.975,
+      "hi": 43.35,
+      "n": 2
+     },
+     "quotes": {
+      "mean": 1.625,
+      "lo": -15.525,
+      "hi": 18.775,
+      "n": 2
+     },
+     "issued": {
+      "mean": -0.5625,
+      "lo": -5.34,
+      "hi": 4.215,
+      "n": 2
+     },
+     "collected": {
+      "mean": 1.125,
+      "lo": 0.635,
+      "hi": 1.615,
+      "n": 2
+     },
+     "agent_minutes": {
+      "mean": 7.6125,
+      "lo": -66.598,
+      "hi": 81.823,
+      "n": 2
+     },
+     "contacted_rr": 1.012671,
+     "collected_rr": 1.382979
+    },
+    "rr": 1.012671
+   },
+   "engine": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "keep": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "abstain": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    },
+    "statuses": {
+     "test only": 2
+    }
+   },
+   "naive": {
+    "rollout": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    }
+   },
+   "harmful_recommendation": {
+    "engine": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "naive": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "coverage": {
+    "rate": null,
+    "n": 0,
+    "estimand": "contacted leads, full rollout"
+   },
+   "loss": {
+    "engine": 1.625,
+    "hold": 1.625,
+    "naive": 0.0,
+    "unit": "quotes per week"
+   }
+  },
+  {
+   "id": "history_harmful",
+   "label": "History only, harmful world",
+   "group": "history",
+   "decision": "ownership",
+   "world": "rescue",
+   "design": {
+    "ownership": "off"
+   },
+   "true_effect": {
+    "value": -24.375,
+    "unit": "quotes per week",
+    "detail": {
+     "contacted_leads": {
+      "mean": -29.8125,
+      "lo": -45.615,
+      "hi": -14.01,
+      "n": 2
+     },
+     "quotes": {
+      "mean": -24.375,
+      "lo": -28.05,
+      "hi": -20.7,
+      "n": 2
+     },
+     "issued": {
+      "mean": -1.0,
+      "lo": -3.205,
+      "hi": 1.205,
+      "n": 2
+     },
+     "collected": {
+      "mean": 0.3125,
+      "lo": -1.525,
+      "hi": 2.15,
+      "n": 2
+     },
+     "agent_minutes": {
+      "mean": -287.025,
+      "lo": -460.779,
+      "hi": -113.271,
+      "n": 2
+     },
+     "contacted_rr": 0.981751,
+     "collected_rr": 1.106383
+    },
+    "rr": 0.981751
+   },
+   "engine": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "keep": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "abstain": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    },
+    "statuses": {
+     "test only": 2
+    }
+   },
+   "naive": {
+    "rollout": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    }
+   },
+   "harmful_recommendation": {
+    "engine": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "naive": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    }
+   },
+   "coverage": {
+    "rate": null,
+    "n": 0,
+    "estimand": "contacted leads, full rollout"
+   },
+   "loss": {
+    "engine": 0.0,
+    "hold": 0.0,
+    "naive": 24.375,
+    "unit": "quotes per week"
+   }
+  },
+  {
+   "id": "before_after",
+   "label": "Before/after while leads drift, no-effect world",
+   "group": "inadequate",
+   "decision": "ownership",
+   "world": "neutral_drift",
+   "design": {
+    "ownership": "from_week",
+    "ownership_from_week": 4
+   },
+   "true_effect": {
+    "value": 4.8125,
+    "unit": "quotes per week",
+    "detail": {
+     "contacted_leads": {
+      "mean": 14.5,
+      "lo": 7.885,
+      "hi": 21.115,
+      "n": 2
+     },
+     "quotes": {
+      "mean": 4.8125,
+      "lo": -18.34,
+      "hi": 27.965,
+      "n": 2
+     },
+     "issued": {
+      "mean": 0.4375,
+      "lo": -2.38,
+      "hi": 3.255,
+      "n": 2
+     },
+     "collected": {
+      "mean": -0.8125,
+      "lo": -1.18,
+      "hi": -0.445,
+      "n": 2
+     },
+     "agent_minutes": {
+      "mean": -38.3,
+      "lo": -329.605,
+      "hi": 253.005,
+      "n": 2
+     },
+     "contacted_rr": 1.009681,
+     "collected_rr": 0.767857
+    },
+    "rr": 1.009681
+   },
+   "engine": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "keep": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "abstain": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    },
+    "statuses": {
+     "comparison inadequate": 2
+    }
+   },
+   "naive": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "harmful_recommendation": {
+    "engine": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "naive": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "coverage": {
+    "rate": null,
+    "n": 0,
+    "estimand": "contacted leads, full rollout"
+   },
+   "loss": {
+    "engine": 4.8125,
+    "hold": 4.8125,
+    "naive": 4.8125,
+    "unit": "quotes per week"
+   }
+  },
+  {
+   "id": "switchback_beneficial",
+   "label": "Weekly switchback, beneficial world",
+   "group": "switchback",
+   "decision": "ownership",
+   "world": "harm",
+   "design": {
+    "ownership": "switchback"
+   },
+   "true_effect": {
+    "value": 53.3125,
+    "unit": "quotes per week",
+    "detail": {
+     "contacted_leads": {
+      "mean": 80.8125,
+      "lo": 76.035,
+      "hi": 85.59,
+      "n": 2
+     },
+     "quotes": {
+      "mean": 53.3125,
+      "lo": 44.37,
+      "hi": 62.255,
+      "n": 2
+     },
+     "issued": {
+      "mean": 0.375,
+      "lo": -0.605,
+      "hi": 1.355,
+      "n": 2
+     },
+     "collected": {
+      "mean": -0.25,
+      "lo": -0.74,
+      "hi": 0.24,
+      "n": 2
+     },
+     "agent_minutes": {
+      "mean": 55.9625,
+      "lo": 40.552,
+      "hi": 71.373,
+      "n": 2
+     },
+     "contacted_rr": 1.049479,
+     "collected_rr": 0.914894
+    },
+    "rr": 1.049479
+   },
+   "engine": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "keep": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "abstain": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    },
+    "statuses": {
+     "not yet": 2
+    }
+   },
+   "naive": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "harmful_recommendation": {
+    "engine": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "naive": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "coverage": {
+    "rate": 1.0,
+    "n": 2,
+    "estimand": "contacted leads, full rollout"
+   },
+   "loss": {
+    "engine": 53.3125,
+    "hold": 53.3125,
+    "naive": 53.3125,
+    "unit": "quotes per week"
+   }
+  },
+  {
+   "id": "switchback_harmful",
+   "label": "Weekly switchback, harmful world",
+   "group": "switchback",
+   "decision": "ownership",
+   "world": "rescue",
+   "design": {
+    "ownership": "switchback"
+   },
+   "true_effect": {
+    "value": -24.375,
+    "unit": "quotes per week",
+    "detail": {
+     "contacted_leads": {
+      "mean": -29.8125,
+      "lo": -45.615,
+      "hi": -14.01,
+      "n": 2
+     },
+     "quotes": {
+      "mean": -24.375,
+      "lo": -28.05,
+      "hi": -20.7,
+      "n": 2
+     },
+     "issued": {
+      "mean": -1.0,
+      "lo": -3.205,
+      "hi": 1.205,
+      "n": 2
+     },
+     "collected": {
+      "mean": 0.3125,
+      "lo": -1.525,
+      "hi": 2.15,
+      "n": 2
+     },
+     "agent_minutes": {
+      "mean": -287.025,
+      "lo": -460.779,
+      "hi": -113.271,
+      "n": 2
+     },
+     "contacted_rr": 0.981751,
+     "collected_rr": 1.106383
+    },
+    "rr": 0.981751
+   },
+   "engine": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "keep": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "abstain": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    },
+    "statuses": {
+     "not yet": 2
+    }
+   },
+   "naive": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "harmful_recommendation": {
+    "engine": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "naive": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "coverage": {
+    "rate": 1.0,
+    "n": 2,
+    "estimand": "contacted leads, full rollout"
+   },
+   "loss": {
+    "engine": 0.0,
+    "hold": 0.0,
+    "naive": 0.0,
+    "unit": "quotes per week"
+   }
+  },
+  {
+   "id": "proxy_reversal",
+   "label": "Closing script: more quotes, fewer collections",
+   "group": "proxy",
+   "decision": "script",
+   "world": "script_reversal",
+   "design": {
+    "script_share": 0.5
+   },
+   "true_effect": {
+    "value": -1.6875,
+    "unit": "collected policies per week",
+    "detail": {
+     "contacted_leads": {
+      "mean": -21.125,
+      "lo": -30.19,
+      "hi": -12.06,
+      "n": 2
+     },
+     "quotes": {
+      "mean": 117.4375,
+      "lo": 112.415,
+      "hi": 122.46,
+      "n": 2
+     },
+     "issued": {
+      "mean": 8.5625,
+      "lo": 5.5,
+      "hi": 11.625,
+      "n": 2
+     },
+     "collected": {
+      "mean": -1.6875,
+      "lo": -2.3,
+      "hi": -1.075,
+      "n": 2
+     },
+     "agent_minutes": {
+      "mean": 483.475,
+      "lo": 467.648,
+      "hi": 499.302,
+      "n": 2
+     },
+     "contacted_rr": 0.987068,
+     "collected_rr": 0.425532
+    },
+    "rr": 0.425532
+   },
+   "engine": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "keep": {
+     "k": 1,
+     "n": 2,
+     "rate": 0.5,
+     "lo": 0.094531,
+     "hi": 0.905469
+    },
+    "abstain": {
+     "k": 1,
+     "n": 2,
+     "rate": 0.5,
+     "lo": 0.094531,
+     "hi": 0.905469
+    },
+    "statuses": {
+     "keep current": 1,
+     "not yet": 1
+    }
+   },
+   "naive": {
+    "rollout": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    }
+   },
+   "harmful_recommendation": {
+    "engine": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "naive": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    }
+   },
+   "coverage": {
+    "rate": 1.0,
+    "n": 2,
+    "estimand": "collected, full rollout"
+   },
+   "loss": {
+    "engine": 0.0,
+    "hold": 0.0,
+    "naive": 1.6875,
+    "unit": "collected policies per week"
+   }
+  },
+  {
+   "id": "proxy_agreement",
+   "label": "Closing script: more quotes, more collections",
+   "group": "proxy",
+   "decision": "script",
+   "world": "script_gain",
+   "design": {
+    "script_share": 0.5
+   },
+   "true_effect": {
+    "value": 0.125,
+    "unit": "collected policies per week",
+    "detail": {
+     "contacted_leads": {
+      "mean": -10.25,
+      "lo": -24.95,
+      "hi": 4.45,
+      "n": 2
+     },
+     "quotes": {
+      "mean": 95.25,
+      "lo": 69.28,
+      "hi": 121.22,
+      "n": 2
+     },
+     "issued": {
+      "mean": 4.4375,
+      "lo": 0.15,
+      "hi": 8.725,
+      "n": 2
+     },
+     "collected": {
+      "mean": 0.125,
+      "lo": -0.855,
+      "hi": 1.105,
+      "n": 2
+     },
+     "agent_minutes": {
+      "mean": 423.8125,
+      "lo": 344.31,
+      "hi": 503.315,
+      "n": 2
+     },
+     "contacted_rr": 0.993728,
+     "collected_rr": 1.042553
+    },
+    "rr": 1.042553
+   },
+   "engine": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "keep": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "abstain": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    },
+    "statuses": {
+     "not yet": 2
+    }
+   },
+   "naive": {
+    "rollout": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    }
+   },
+   "harmful_recommendation": {
+    "engine": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "naive": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "coverage": {
+    "rate": 1.0,
+    "n": 2,
+    "estimand": "collected, full rollout"
+   },
+   "loss": {
+    "engine": 0.125,
+    "hold": 0.125,
+    "naive": 0.0,
+    "unit": "collected policies per week"
+   }
+  },
+  {
+   "id": "heldout_wears_off",
+   "label": "Held out: the annoyance wears off after a day",
+   "group": "heldout",
+   "decision": "ownership",
+   "world": "harm_wears_off",
+   "design": {
+    "ownership": "lead_random"
+   },
+   "true_effect": {
+    "value": 1.0625,
+    "unit": "quotes per week",
+    "detail": {
+     "contacted_leads": {
+      "mean": -9.3125,
+      "lo": -16.295,
+      "hi": -2.33,
+      "n": 2
+     },
+     "quotes": {
+      "mean": 1.0625,
+      "lo": -15.475,
+      "hi": 17.6,
+      "n": 2
+     },
+     "issued": {
+      "mean": -3.375,
+      "lo": -6.07,
+      "hi": -0.68,
+      "n": 2
+     },
+     "collected": {
+      "mean": -0.1875,
+      "lo": -1.045,
+      "hi": 0.67,
+      "n": 2
+     },
+     "agent_minutes": {
+      "mean": -182.125,
+      "lo": -201.431,
+      "hi": -162.819,
+      "n": 2
+     },
+     "contacted_rr": 0.994595,
+     "collected_rr": 0.934783
+    },
+    "rr": 0.994595
+   },
+   "engine": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "keep": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "abstain": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    },
+    "statuses": {
+     "not yet": 2
+    }
+   },
+   "naive": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "harmful_recommendation": {
+    "engine": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "naive": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "coverage": {
+    "rate": 1.0,
+    "n": 2,
+    "estimand": "contacted leads, full rollout"
+   },
+   "loss": {
+    "engine": 1.0625,
+    "hold": 1.0625,
+    "naive": 1.0625,
+    "unit": "quotes per week"
+   }
+  },
+  {
+   "id": "heldout_on_reach",
+   "label": "Held out: overlaps land on hard-to-reach leads",
+   "group": "heldout",
+   "decision": "ownership",
+   "world": "rescue_on_reach",
+   "design": {
+    "ownership": "lead_random"
+   },
+   "true_effect": {
+    "value": -29.625,
+    "unit": "quotes per week",
+    "detail": {
+     "contacted_leads": {
+      "mean": -35.125,
+      "lo": -53.01,
+      "hi": -17.24,
+      "n": 2
+     },
+     "quotes": {
+      "mean": -29.625,
+      "lo": -36.73,
+      "hi": -22.52,
+      "n": 2
+     },
+     "issued": {
+      "mean": -2.25,
+      "lo": -2.495,
+      "hi": -2.005,
+      "n": 2
+     },
+     "collected": {
+      "mean": -1.25,
+      "lo": -1.495,
+      "hi": -1.005,
+      "n": 2
+     },
+     "agent_minutes": {
+      "mean": -314.8,
+      "lo": -343.073,
+      "hi": -286.527,
+      "n": 2
+     },
+     "contacted_rr": 0.978815,
+     "collected_rr": 0.722222
+    },
+    "rr": 0.978815
+   },
+   "engine": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "keep": {
+     "k": 1,
+     "n": 2,
+     "rate": 0.5,
+     "lo": 0.094531,
+     "hi": 0.905469
+    },
+    "abstain": {
+     "k": 1,
+     "n": 2,
+     "rate": 0.5,
+     "lo": 0.094531,
+     "hi": 0.905469
+    },
+    "statuses": {
+     "keep current": 1,
+     "not yet": 1
+    }
+   },
+   "naive": {
+    "rollout": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "harmful_recommendation": {
+    "engine": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "naive": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "coverage": {
+    "rate": 1.0,
+    "n": 2,
+    "estimand": "contacted leads, full rollout"
+   },
+   "loss": {
+    "engine": 0.0,
+    "hold": 0.0,
+    "naive": 0.0,
+    "unit": "quotes per week"
+   }
+  },
+  {
+   "id": "heldout_tight",
+   "label": "Held out: 15% fewer agents, arms compete harder",
+   "group": "heldout",
+   "decision": "ownership",
+   "world": "harm_tight",
+   "design": {
+    "ownership": "lead_random"
+   },
+   "true_effect": {
+    "value": 44.8125,
+    "unit": "quotes per week",
+    "detail": {
+     "contacted_leads": {
+      "mean": 57.8125,
+      "lo": 55.485,
+      "hi": 60.14,
+      "n": 2
+     },
+     "quotes": {
+      "mean": 44.8125,
+      "lo": 44.2,
+      "hi": 45.425,
+      "n": 2
+     },
+     "issued": {
+      "mean": 0.9375,
+      "lo": -4.575,
+      "hi": 6.45,
+      "n": 2
+     },
+     "collected": {
+      "mean": -1.25,
+      "lo": -2.23,
+      "hi": -0.27,
+      "n": 2
+     },
+     "agent_minutes": {
+      "mean": -6.35,
+      "lo": -72.794,
+      "hi": 60.094,
+      "n": 2
+     },
+     "contacted_rr": 1.038558,
+     "collected_rr": 0.677419
+    },
+    "rr": 1.038558
+   },
+   "engine": {
+    "rollout": {
+     "k": 1,
+     "n": 2,
+     "rate": 0.5,
+     "lo": 0.094531,
+     "hi": 0.905469
+    },
+    "keep": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "abstain": {
+     "k": 1,
+     "n": 2,
+     "rate": 0.5,
+     "lo": 0.094531,
+     "hi": 0.905469
+    },
+    "statuses": {
+     "not yet": 1,
+     "roll out with review": 1
+    }
+   },
+   "naive": {
+    "rollout": {
+     "k": 2,
+     "n": 2,
+     "rate": 1.0,
+     "lo": 0.34238,
+     "hi": 1.0
+    }
+   },
+   "harmful_recommendation": {
+    "engine": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    },
+    "naive": {
+     "k": 0,
+     "n": 2,
+     "rate": 0.0,
+     "lo": 0.0,
+     "hi": 0.65762
+    }
+   },
+   "coverage": {
+    "rate": 1.0,
+    "n": 2,
+    "estimand": "contacted leads, full rollout"
+   },
+   "loss": {
+    "engine": 22.40625,
+    "hold": 44.8125,
+    "naive": 0.0,
+    "unit": "quotes per week"
+   }
+  }
+ ],
+ "over_time": [
+  {
+   "case": "beneficial",
+   "weeks": 4,
+   "n": 2,
+   "roll out with review": 0,
+   "keep current": 0,
+   "not yet": 2
+  },
+  {
+   "case": "beneficial",
+   "weeks": 8,
+   "n": 2,
+   "roll out with review": 2,
+   "keep current": 0,
+   "not yet": 0
+  },
+  {
+   "case": "harmful",
+   "weeks": 4,
+   "n": 2,
+   "roll out with review": 0,
+   "keep current": 2,
+   "not yet": 0
+  },
+  {
+   "case": "harmful",
+   "weeks": 8,
+   "n": 2,
+   "roll out with review": 0,
+   "keep current": 2,
+   "not yet": 0
+  }
+ ]
+}

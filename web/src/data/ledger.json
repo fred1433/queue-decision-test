@@ -1,0 +1,92 @@
+[
+ {
+  "name": "Leads per week",
+  "value": "3,200",
+  "status": "assumed scale",
+  "note": "Used to size the synthetic operation, nothing else."
+ },
+ {
+  "name": "Quotes per week",
+  "value": "1,100",
+  "status": "assumed scale",
+  "note": "Calibration target for the synthetic funnel."
+ },
+ {
+  "name": "Issued policies per week",
+  "value": "40",
+  "status": "assumed scale",
+  "note": "Calibration target. No issue dates: no cohort can be built from it."
+ },
+ {
+  "name": "Collected policies per week",
+  "value": "3",
+  "status": "assumed scale",
+  "note": "Calibration target for a RATE; each synthetic week draws its own count."
+ },
+ {
+  "name": "Ad spend per week",
+  "value": "164,000 MXN",
+  "status": "assumed scale",
+  "note": "Split between Meta and Google by us."
+ },
+ {
+  "name": "Call center cost per week",
+  "value": "234,000 MXN",
+  "status": "assumed scale",
+  "note": "Split between three centers at hourly rates set by us."
+ },
+ {
+  "name": "Three centers dial the same leads; an AI voice agent takes overflow",
+  "value": "",
+  "status": "assumed scale",
+  "note": "Modelled as stated."
+ },
+ {
+  "name": "Center hourly rates",
+  "value": "165 / 135 / 110 MXN",
+  "status": "assumed",
+  "note": "Chosen so the three add up to the assumed total."
+ },
+ {
+  "name": "Contact, quote, issue and collection probabilities",
+  "value": "see truth.json",
+  "status": "assumed",
+  "note": "Tuned to land near the assumed counts."
+ },
+ {
+  "name": "Hour-of-day response curve",
+  "value": "see truth.json",
+  "status": "assumed",
+  "note": "People answer more after work."
+ },
+ {
+  "name": "Overlap rate between centers",
+  "value": "12% of dials",
+  "status": "assumed",
+  "note": "How often a second center dials within minutes."
+ },
+ {
+  "name": "What an overlap does to the lead",
+  "value": "three worlds",
+  "status": "not identified",
+  "note": "The subject of the test: history cannot tell."
+ },
+ {
+  "name": "Payment delays, cancellations, cohort maturity",
+  "value": "",
+  "status": "not identified",
+  "note": "Not modelled; the synthetic lag is fixed."
+ },
+ {
+  "name": "Fees, retained revenue, who pays which cost",
+  "value": "",
+  "status": "not identified",
+  "note": "Left out on purpose: no margin is computed."
+ },
+ {
+  "name": "Premium amounts",
+  "value": "lognormal by source",
+  "status": "assumed",
+  "note": "Only used to fill the policy table."
+ }
+]

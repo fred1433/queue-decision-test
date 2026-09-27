@@ -1,0 +1,42 @@
+{
+ "object_type": "AllocationDecision",
+ "decision_id": "next-contact-owner-001",
+ "evidence_and_choice": {
+  "snapshot": "synthetic, seed 2026, 8 weeks",
+  "cutoff": "end of week 8",
+  "policy_version": "multi-center retries v0",
+  "eligible_population": "every new lead, all sources, all centers",
+  "baseline_metric": "leads reached per lead",
+  "proposed_change": "one next-contact owner per lead across centers",
+  "expected_effect": "unknown sign: not identified from history",
+  "assumptions": [
+   "overlap mechanism unknown"
+  ]
+ },
+ "assignment_and_execution": {
+  "experimental_unit": "lead (canonical lead ID across all centers)",
+  "arms": [
+   "current",
+   "single owner"
+  ],
+  "assignment_probability": 0.5,
+  "assignment_logged_at": "lead creation, before any dial",
+  "eligible_but_untreated": "logged with reason (no consent, outside contact window, duplicate)",
+  "approval": "operations director",
+  "exposure": "owner field honoured by every center's dialer",
+  "dialer_acknowledgement": "per-dial check that the dialing center is the owner",
+  "stop_conditions": [
+   "leads reached per lead falls below current by more than 5% at week 2",
+   "any center dials outside the permitted window"
+  ]
+ },
+ "evaluation": {
+  "outcome_horizon": "contact and quote: 14 days after lead creation; first payment: when mature",
+  "maturity_rule": "a lead counts once 14 days have passed; a policy once its first due date has passed",
+  "cost_definition": "agent minutes per lead, from dialer handle time",
+  "review_after_weeks": 4,
+  "reversal_criterion": "interval on leads reached per lead entirely below 1",
+  "observed_result": null,
+  "counterfactual_estimate": null
+ }
+}

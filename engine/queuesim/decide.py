@@ -55,6 +55,9 @@ def lead_table(logs, a=None):
     L["dials"] = g.size().reindex(L.index, fill_value=0)
     L["agent_min"] = a[a.human].groupby("lead_id").handle_min.sum().reindex(L.index, fill_value=0.0)
     p = logs["policies"].set_index("lead_id")
+    # maturity rule: a lead counts once 14 days have passed since it arrived
+    cutoff = float(a.t_min.max()) - A.MATURITY_DAYS * 1440 if len(a) else 0.0
+    L["mature"] = L.arrival_min <= cutoff
     L["issued"] = L.index.isin(p.index)
     L["collected"] = p.first_payment_collected.reindex(L.index, fill_value=False).astype(bool)
     return L.reset_index()
@@ -131,6 +134,7 @@ def decide_ownership(logs) -> dict:
                     naive=naive_history_rule(ov), estimates={})
 
     L = lead_table(logs, a)
+    L = L[L.mature]
     if kind == "from_week":
         before = float(L[~L.single_owner].contacted.mean())
         after = float(L[L.single_owner].contacted.mean())
@@ -181,6 +185,7 @@ def decide_script(logs) -> dict:
     if logs["design"]["script"].get("kind") != "lead_random":
         return dict(status="test only", estimates={}, naive="keep current")
     L = lead_table(logs)
+    L = L[L.mature]
     est = {o: _rr(L, "new_script", o, ["source"]) for o in ["quoted", "issued", "collected"]}
     q, col = est["quoted"], est["collected"]
     if col["lo"] > 1:

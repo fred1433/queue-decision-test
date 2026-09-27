@@ -114,7 +114,9 @@ def _assign(rng, leads, weeks, policy: Policy):
     raise ValueError(kind)
 
 
-def simulate(weeks: int = 8, seed: int = 0, policy: Policy | None = None, world: World | None = None):
+def simulate(weeks: int = 8, seed: int = 0, policy: Policy | None = None, world: World | None = None,
+             tail_weeks: int = 2):
+    """`weeks` of new leads, then `tail_weeks` more of dialing with no new leads, so every lead matures."""
     policy = policy or Policy()
     world = world or World()
     rng = np.random.default_rng(seed)
@@ -208,7 +210,7 @@ def simulate(weeks: int = 8, seed: int = 0, policy: Policy | None = None, world:
         if world.burn_hours:
             burn_until[i] = t + world.burn_hours * 60
 
-    for w in range(weeks):
+    for w in range(weeks + tail_weeks):
         for day in range(T.OPEN_DAYS):
             for hour in T.SLOTS:
                 s = (w * 7 + day) * 1440 + hour * 60
@@ -326,7 +328,7 @@ def simulate(weeks: int = 8, seed: int = 0, policy: Policy | None = None, world:
     lead_log = leads[["lead_id", "week", "arrival_min", "source"]].copy()
     lead_log["single_owner"] = owned
     lead_log["new_script"] = script_arm
-    design = dict(ownership=own_design,
+    design = dict(read_after_last_lead_days=7 * tail_weeks, ownership=own_design,
                   script=(dict(kind="lead_random", unit="lead", share=policy.script_share) if 0 < policy.script_share < 1
                           else dict(kind="all" if policy.script_share >= 1 else "off")))
     logs = dict(leads=lead_log, attempts=attempts_df, policies=policies, staffing=staffing_df, spend=spend,

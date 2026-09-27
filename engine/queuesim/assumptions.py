@@ -13,3 +13,7 @@ REVIEW_WEEKS = 4
 # Planner defaults (conditional on assumptions, see power.py).
 TARGET_RELATIVE_EFFECT = 0.20
 HORIZON_WEEKS = 104
+
+# Maturity rule: a lead is read once this many days have passed since it arrived (the last dial in
+# the logs stands in for "now").
+MATURITY_DAYS = 14

@@ -13,258 +13,350 @@
   },
   "synthetic_week": {
    "leads": 3211.25,
-   "contacted_leads": 1739.0,
-   "quotes": 1170.375,
-   "issued": 43.625,
-   "collected": 3.75,
+   "contacted_leads": 1719.375,
+   "quotes": 1157.25,
+   "issued": 42.75,
+   "collected": 2.375,
    "ad_spend_mxn": 164000.0,
-   "call_center_cost_mxn": 233615.625,
-   "agent_minutes": 53845.25
+   "call_center_cost_mxn": 233364.66,
+   "agent_minutes": 53856.95
   }
  },
  "hashes": {
-  "harm": "92109dc302997b9930f88cb2ababd528d51f8c4837c09265217946f5ae317e1b",
-  "neutral": "92109dc302997b9930f88cb2ababd528d51f8c4837c09265217946f5ae317e1b",
-  "rescue": "92109dc302997b9930f88cb2ababd528d51f8c4837c09265217946f5ae317e1b"
+  "harm": "1d14144009889bf81b3ef9601f2c1aa969ccef1b4b6d75919ac6d5e545a4138d",
+  "neutral": "1d14144009889bf81b3ef9601f2c1aa969ccef1b4b6d75919ac6d5e545a4138d",
+  "rescue": "1d14144009889bf81b3ef9601f2c1aa969ccef1b4b6d75919ac6d5e545a4138d"
  },
  "identical": true,
  "history": {
-  "leads_with_overlap_share": 0.454652,
-  "overlaps_per_week": 1951.25,
-  "second_dial_minutes_per_week": 4676.775,
+  "leads_with_overlap_share": 0.4529,
+  "overlaps_per_week": 1942.5,
+  "second_dial_minutes_per_week": 4605.675,
   "second_dial_contact_rate": [
-   0.06451,
-   0.060762,
-   0.068472
+   0.064929,
+   0.061162,
+   0.068912
   ],
   "contact_after_overlap_rr": {
-   "rr": 0.514031,
-   "lo": 0.480317,
-   "hi": 0.550111,
+   "rr": 0.539767,
+   "lo": 0.504975,
+   "hi": 0.576957,
    "strata": 18,
-   "events1": 1138.0,
-   "events0": 4122.0
+   "events1": 1180.0,
+   "events0": 4124.0
   }
  },
  "history_why": "By rule: every lead in these logs ran under one policy, so no comparison exists. The drop after an overlap fits two stories with opposite decisions: the overlap annoys the lead, or cooling leads draw overlaps and the second dial is a real extra chance. Nothing in the logs separates them.",
  "tapes": [
   {
-   "lead_id": 7129,
-   "source": "google",
-   "arrival_min": 22481,
-   "week_start_min": 20160,
-   "dials": [
-    {
-     "h": 0.0,
-     "center": "B",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 18.117,
-     "center": "B",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 18.233,
-     "center": "A",
-     "outcome": "no_answer",
-     "overlap": true
-    },
-    {
-     "h": 24.6,
-     "center": "A",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 52.283,
-     "center": "C",
-     "outcome": "quote",
-     "overlap": false
-    }
-   ]
-  },
-  {
-   "lead_id": 7186,
-   "source": "google",
-   "arrival_min": 22689,
-   "week_start_min": 20160,
-   "dials": [
-    {
-     "h": 0.0,
-     "center": "B",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 16.45,
-     "center": "A",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 20.567,
-     "center": "B",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 39.15,
-     "center": "B",
-     "outcome": "quote",
-     "overlap": false
-    },
-    {
-     "h": 39.483,
-     "center": "A",
-     "outcome": "no_answer",
-     "overlap": true
-    }
-   ]
-  },
-  {
-   "lead_id": 7288,
-   "source": "google",
-   "arrival_min": 22928,
-   "week_start_min": 20160,
-   "dials": [
-    {
-     "h": 9.867,
-     "center": "B",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 13.267,
-     "center": "B",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 13.6,
-     "center": "A",
-     "outcome": "no_answer",
-     "overlap": true
-    },
-    {
-     "h": 34.433,
-     "center": "A",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 61.083,
-     "center": "C",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 86.667,
-     "center": "B",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 156.55,
-     "center": "C",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 207.733,
-     "center": "C",
-     "outcome": "quote",
-     "overlap": false
-    }
-   ]
-  },
-  {
-   "lead_id": 7602,
+   "lead_id": 7092,
    "source": "meta",
-   "arrival_min": 23980,
+   "arrival_min": 22381,
    "week_start_min": 20160,
    "dials": [
     {
-     "h": 0.0,
+     "h": 0.017,
+     "center": "B",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 5.917,
+     "center": "B",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 22.333,
+     "center": "B",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 43.65,
      "center": "C",
      "outcome": "no_answer",
      "overlap": false
     },
     {
-     "h": 16.933,
-     "center": "A",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 17.1,
-     "center": "C",
-     "outcome": "no_answer",
-     "overlap": true
-    },
-    {
-     "h": 24.75,
-     "center": "C",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 24.967,
+     "h": 43.7,
      "center": "B",
      "outcome": "no_answer",
      "overlap": true
     },
     {
-     "h": 65.667,
-     "center": "C",
+     "h": 69.783,
+     "center": "A",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 142.467,
+     "center": "A",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 193.717,
+     "center": "B",
      "outcome": "contact",
      "overlap": false
-    },
-    {
-     "h": 65.817,
-     "center": "A",
-     "outcome": "no_answer",
-     "overlap": true
     }
    ]
   },
   {
-   "lead_id": 7634,
-   "source": "meta",
-   "arrival_min": 24085,
+   "lead_id": 7137,
+   "source": "google",
+   "arrival_min": 22517,
    "week_start_min": 20160,
    "dials": [
     {
      "h": 0.0,
-     "center": "C",
-     "outcome": "no_answer",
-     "overlap": false
-    },
-    {
-     "h": 15.733,
      "center": "B",
      "outcome": "no_answer",
      "overlap": false
     },
     {
-     "h": 15.967,
+     "h": 17.933,
      "center": "C",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 17.983,
+     "center": "A",
      "outcome": "no_answer",
      "overlap": true
     },
     {
-     "h": 23.383,
+     "h": 24.033,
+     "center": "B",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 50.1,
      "center": "A",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 89.95,
+     "center": "A",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 161.617,
+     "center": "C",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 161.883,
+     "center": "A",
+     "outcome": "no_answer",
+     "overlap": true
+    },
+    {
+     "h": 212.3,
+     "center": "C",
+     "outcome": "quote",
+     "overlap": false
+    }
+   ]
+  },
+  {
+   "lead_id": 7234,
+   "source": "google",
+   "arrival_min": 22788,
+   "week_start_min": 20160,
+   "dials": [
+    {
+     "h": 0.0,
+     "center": "B",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 15.367,
+     "center": "C",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 19.45,
+     "center": "C",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 37.867,
+     "center": "C",
      "outcome": "no_answer",
      "overlap": false
     },
     {
      "h": 63.983,
+     "center": "C",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 88.933,
+     "center": "C",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 158.567,
+     "center": "C",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 158.683,
      "center": "A",
      "outcome": "contact",
+     "overlap": true
+    }
+   ]
+  },
+  {
+   "lead_id": 7384,
+   "source": "database",
+   "arrival_min": 23521,
+   "week_start_min": 20160,
+   "dials": [
+    {
+     "h": 0.367,
+     "center": "C",
+     "outcome": "no_answer",
      "overlap": false
+    },
+    {
+     "h": 3.617,
+     "center": "C",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 3.717,
+     "center": "B",
+     "outcome": "no_answer",
+     "overlap": true
+    },
+    {
+     "h": 24.783,
+     "center": "A",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 24.817,
+     "center": "B",
+     "outcome": "no_answer",
+     "overlap": true
+    },
+    {
+     "h": 50.883,
+     "center": "B",
+     "outcome": "quote",
+     "overlap": false
+    }
+   ]
+  },
+  {
+   "lead_id": 7620,
+   "source": "meta",
+   "arrival_min": 24046,
+   "week_start_min": 20160,
+   "dials": [
+    {
+     "h": 0.0,
+     "center": "C",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 16.367,
+     "center": "B",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 20.683,
+     "center": "A",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 40.383,
+     "center": "A",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 66.333,
+     "center": "B",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 114.8,
+     "center": "C",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 166.0,
+     "center": "B",
+     "outcome": "quote",
+     "overlap": false
+    },
+    {
+     "h": 166.133,
+     "center": "C",
+     "outcome": "no_answer",
+     "overlap": true
+    }
+   ]
+  },
+  {
+   "lead_id": 7641,
+   "source": "meta",
+   "arrival_min": 24112,
+   "week_start_min": 20160,
+   "dials": [
+    {
+     "h": 0.0,
+     "center": "A",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 15.667,
+     "center": "A",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 20.033,
+     "center": "A",
+     "outcome": "no_answer",
+     "overlap": false
+    },
+    {
+     "h": 39.5,
+     "center": "B",
+     "outcome": "quote",
+     "overlap": false
+    },
+    {
+     "h": 39.7,
+     "center": "C",
+     "outcome": "no_answer",
+     "overlap": true
     }
    ]
   }
@@ -272,202 +364,211 @@
  "worlds": {
   "harm": {
    "history_status": "test only",
-   "history_naive": "roll out with review",
+   "history_naive": "roll out",
    "experiment": {
-    "status": "not yet",
-    "naive": "roll out with review",
+    "status": "proceed to confirmation",
+    "naive": "roll out",
     "estimates": {
      "contacted": {
-      "rr": 1.059708,
-      "lo": 1.039523,
-      "hi": 1.080284,
+      "rr": 1.044697,
+      "lo": 1.024444,
+      "hi": 1.065351,
       "strata": 6,
-      "events1": 7174.0,
-      "events0": 7038.0
+      "events1": 6997.0,
+      "events0": 6930.0
      },
      "quoted": {
-      "rr": 1.062378,
-      "lo": 1.031162,
-      "hi": 1.09454,
+      "rr": 1.037749,
+      "lo": 1.006976,
+      "hi": 1.069463,
       "strata": 6,
-      "events1": 4837.0,
-      "events0": 4743.0
+      "events1": 4703.0,
+      "events0": 4700.0
      },
      "issued": {
-      "rr": 0.929104,
-      "lo": 0.758138,
-      "hi": 1.138625,
+      "rr": 1.053197,
+      "lo": 0.847754,
+      "hi": 1.308426,
       "strata": 6,
-      "events1": 172.0,
-      "events0": 194.0
+      "events1": 161.0,
+      "events0": 160.0
      },
      "collected": {
-      "rr": 0.351092,
-      "lo": 0.148538,
-      "hi": 0.829859,
-      "strata": 6,
-      "events1": 7.0,
-      "events0": 21.0
+      "events1": 6,
+      "events0": 7,
+      "n1": 12636,
+      "n0": 13054,
+      "method": "exact conditional",
+      "rr": 0.885497,
+      "lo": 0.245852,
+      "hi": 3.077119,
+      "resolved": true
      },
      "quoted_per_contacted": {
-      "rr": 1.003507,
-      "lo": 0.980946,
-      "hi": 1.026588,
+      "rr": 0.993045,
+      "lo": 0.970596,
+      "hi": 1.016013,
       "strata": 3,
-      "events1": 4837.0,
-      "events0": 4743.0
+      "events1": 4703.0,
+      "events0": 4700.0
      }
     },
-    "guardrail": "collections",
-    "sample_ratio_p": 0.014768,
+    "guardrail": null,
+    "sample_ratio_p": 0.009275,
     "collected": {
-     "owner": 7,
-     "current": 21
+     "owner": 6,
+     "current": 7
     },
-    "why": "Leads under a single owner are reached more often, but collected payments fell, with an interval entirely below 1. The guardrail holds the rollout until the collections are explained.",
+    "why": "Leads under a single owner are reached more often within 14 days, the extra contacts quote as often as the others, and collected payments show no significant drop. Next: the confirmation step.",
     "minutes": {
-     "False": 16.872055,
-     "True": 17.143732
+     "False": 16.056105,
+     "True": 15.912599
     },
     "arms": {
-     "owner": 12405,
-     "current": 12793
+     "owner": 12636,
+     "current": 13054
     }
    }
   },
   "neutral": {
    "history_status": "test only",
-   "history_naive": "roll out with review",
+   "history_naive": "roll out",
    "experiment": {
     "status": "not yet",
-    "naive": "keep current",
+    "naive": "roll out",
     "estimates": {
      "contacted": {
-      "rr": 0.98629,
-      "lo": 0.967198,
-      "hi": 1.005758,
+      "rr": 0.996698,
+      "lo": 0.977157,
+      "hi": 1.016631,
       "strata": 6,
-      "events1": 6776.0,
-      "events0": 7089.0
+      "events1": 6762.0,
+      "events0": 6982.0
      },
      "quoted": {
-      "rr": 0.99674,
-      "lo": 0.967179,
-      "hi": 1.027204,
+      "rr": 0.999324,
+      "lo": 0.969618,
+      "hi": 1.02994,
       "strata": 6,
-      "events1": 4597.0,
-      "events0": 4770.0
+      "events1": 4601.0,
+      "events0": 4748.0
      },
      "issued": {
-      "rr": 0.840255,
-      "lo": 0.678558,
-      "hi": 1.040484,
+      "rr": 1.162146,
+      "lo": 0.940801,
+      "hi": 1.435568,
       "strata": 6,
-      "events1": 149.0,
-      "events0": 186.0
+      "events1": 179.0,
+      "events0": 160.0
      },
      "collected": {
-      "rr": 0.979683,
-      "lo": 0.433488,
-      "hi": 2.214081,
-      "strata": 6,
-      "events1": 11.0,
-      "events0": 12.0
+      "events1": 12,
+      "events0": 9,
+      "n1": 12636,
+      "n0": 13054,
+      "method": "exact conditional",
+      "rr": 1.37744,
+      "lo": 0.532682,
+      "hi": 3.701544,
+      "resolved": true
      },
      "quoted_per_contacted": {
-      "rr": 1.009466,
-      "lo": 0.986585,
-      "hi": 1.032877,
+      "rr": 1.001843,
+      "lo": 0.979256,
+      "hi": 1.024952,
       "strata": 3,
-      "events1": 4597.0,
-      "events0": 4770.0
+      "events1": 4601.0,
+      "events0": 4748.0
      }
     },
     "guardrail": null,
-    "sample_ratio_p": 0.013643,
+    "sample_ratio_p": 0.009275,
     "collected": {
-     "owner": 11,
-     "current": 12
+     "owner": 12,
+     "current": 9
     },
     "why": "The comparison is valid but the difference is still inside the noise.",
     "minutes": {
-     "False": 16.858522,
-     "True": 16.737409
+     "False": 16.157178,
+     "True": 15.978822
     },
     "arms": {
-     "owner": 12433,
-     "current": 12826
+     "owner": 12636,
+     "current": 13054
     }
    }
   },
   "rescue": {
    "history_status": "test only",
-   "history_naive": "roll out with review",
+   "history_naive": "roll out",
    "experiment": {
-    "status": "not yet",
+    "status": "keep current",
     "naive": "keep current",
     "estimates": {
      "contacted": {
-      "rr": 0.981813,
-      "lo": 0.962565,
-      "hi": 1.001446,
+      "rr": 0.950296,
+      "lo": 0.931501,
+      "hi": 0.969471,
       "strata": 6,
-      "events1": 6597.0,
-      "events0": 6963.0
+      "events1": 6452.0,
+      "events0": 7052.0
      },
      "quoted": {
-      "rr": 0.983461,
-      "lo": 0.953705,
-      "hi": 1.014147,
+      "rr": 0.954101,
+      "lo": 0.925201,
+      "hi": 0.983905,
       "strata": 6,
-      "events1": 4428.0,
-      "events0": 4675.0
+      "events1": 4360.0,
+      "events0": 4754.0
      },
      "issued": {
-      "rr": 0.923515,
-      "lo": 0.741522,
-      "hi": 1.150175,
+      "rr": 0.937742,
+      "lo": 0.748436,
+      "hi": 1.174931,
       "strata": 6,
-      "events1": 147.0,
-      "events0": 167.0
+      "events1": 140.0,
+      "events0": 157.0
      },
      "collected": {
-      "rr": 0.901506,
-      "lo": 0.404147,
-      "hi": 2.010937,
-      "strata": 6,
-      "events1": 11.0,
-      "events0": 13.0
+      "events1": 11,
+      "events0": 21,
+      "n1": 12636,
+      "n0": 13054,
+      "method": "exact conditional",
+      "rr": 0.541137,
+      "lo": 0.235622,
+      "hi": 1.174031,
+      "resolved": true
      },
      "quoted_per_contacted": {
-      "rr": 1.000884,
-      "lo": 0.977707,
-      "hi": 1.02461,
+      "rr": 1.00394,
+      "lo": 0.980826,
+      "hi": 1.027598,
       "strata": 3,
-      "events1": 4428.0,
-      "events0": 4675.0
+      "events1": 4360.0,
+      "events0": 4754.0
      }
     },
     "guardrail": null,
-    "sample_ratio_p": 0.01552,
+    "sample_ratio_p": 0.009275,
     "collected": {
      "owner": 11,
-     "current": 13
+     "current": 21
     },
-    "why": "The comparison is valid but the difference is still inside the noise.",
+    "why": "Leads under a single owner are reached less often within 14 days: the other centers' calls were doing real work.",
     "minutes": {
-     "False": 16.779158,
-     "True": 16.628394
+     "False": 16.241167,
+     "True": 15.619452
     },
     "arms": {
-     "owner": 12397,
-     "current": 12782
+     "owner": 12636,
+     "current": 13054
     }
    }
   }
  },
  "switchback": {
-  "calls_outside_arrival_week": 0.559441,
-  "control_week_calls_on_owner_leads": 0.287324
+  "calls_outside_arrival_week": 0.558554,
+  "control_week_calls_on_owner_leads": 0.286546
  }
 }

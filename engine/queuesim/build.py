@@ -59,7 +59,7 @@ def log_hash(logs) -> str:
     return m.hexdigest()
 
 
-def tapes(logs, n=5):
+def tapes(logs, n=6):
     """A few leads whose history shows an overlap: every dial, by center, with its outcome."""
     a = logs["attempts"]
     hum = a[a.handler != "AI"].sort_values(["lead_id", "t_min"])

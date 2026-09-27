@@ -10,9 +10,10 @@ simulator and the decision code have the same author, so this is not an independ
 Should each lead get one next-contact owner across the three centers, instead of any center calling it
 back? Under the current process, three versions of the operation write byte-identical logs (by
 construction: the versions differ only in code the current policy never runs; `tests/test_worlds.py`
-checks the hashes), yet the change helps in one, leaves quotes unchanged in one and hurts in one. On
+checks the hashes), yet the change helps in one, barely moves quotes in one and hurts in one. On
 history the decision code answers "test only" by rule (one policy in the logs, no comparison exists).
-Once a randomized split runs, it separates them; the bench measures how often, and at what cost.
+Once a randomized split runs, a first-stage screen separates them (proceed to confirmation, not yet, keep
+current); the bench measures how often, and at what cost. It does not test a full rollout procedure.
 
 ## Layout
 
@@ -23,7 +24,7 @@ Once a randomized split runs, it separates them; the bench measures how often, a
   rollouts where the change hurts, interval coverage and decision loss, against holding the current policy
   and against a naive rule.
 - `engine/queuesim/power.py` and `web/src/lib/planner.ts`: a planner conditional on its assumptions.
-- `web/src/data/*.json`: exactly what the page shows, rebuilt by `python -m queuesim.build bench/run3.json`.
+- `web/src/data/*.json`: exactly what the page shows, rebuilt by `python -m queuesim.build bench/run4.json`.
 - `data/history_*.csv.gz`: the published run's logs (seed 2026, 8 weeks, current policy).
 
 ## Bench runs, and everything that changed between them
@@ -36,6 +37,13 @@ Once a randomized split runs, it separates them; the bench measures how often, a
   from its stored results under that definition.
 - Run 2 to run 3 (`bench/run3.json`, produced directly by the published `benchmark.py`), after an outside
   review: a guardrail on collected payments and a sample-ratio check in the decision code.
+- Run 3 to run 4 (`bench/run4.json`), after a second review that executed the code: contacts and quotes
+  counted within each lead's first 14 days on a logged extraction clock; exact collection inference that
+  works with zero events (zero in both arms is reported as unresolved); the simulator's opening hours and
+  10-call limit enforced and violations counted in the bench; a favorable screen now reads "proceed to
+  confirmation" (the bench tests this first stage, not a full rollout procedure); a log-ratio interval
+  for randomized arrival-week cohorts (approximate, with carryover). Enforcing the limits shifts later
+  random draws, so the published seed gives a different run than before.
 - The three harder mechanisms were written with the bench, before its first run. No threshold was set on
   them, but they are not an independent hold-out: the code changed after runs that included them.
 

@@ -16,9 +16,9 @@ Z = st.norm.ppf(0.975) + st.norm.ppf(0.80)
 
 
 def weeks_needed(p0: float, rel: float, leads_per_week: float, share: float = 0.5) -> float:
-    p1 = min(p0 * (1 + rel), 0.999999)
+    p1 = p0 * (1 + rel)
     d = p1 - p0
-    if p0 <= 0 or d == 0 or leads_per_week <= 0 or not 0 < share < 1:
+    if p1 >= 1 or p0 <= 0 or d == 0 or leads_per_week <= 0 or not 0 < share < 1:
         return math.inf
     # total leads N with n1 = share*N, n0 = (1-share)*N
     n_total = Z ** 2 * (p1 * (1 - p1) / share + p0 * (1 - p0) / (1 - share)) / d ** 2

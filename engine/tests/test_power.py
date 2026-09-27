@@ -21,3 +21,8 @@ def test_browser_planner_agrees():
         pytest.skip("web planner not built yet")
     js = ts.read_text()
     assert "1.959963984540054" in js and "0.8416212335729143" in js
+
+
+def test_impossible_target_is_refused_not_capped():
+    import math
+    assert math.isinf(weeks_needed(3000 / 3200, 2.0, 3200))

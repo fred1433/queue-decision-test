@@ -43,7 +43,7 @@ def test_before_after_is_inadequate():
 
 
 def test_clear_gain_rolls_out():
-    assert decide_ownership(make_logs(20000, 0.60, 0.50))["status"] == "roll out with review"
+    assert decide_ownership(make_logs(20000, 0.60, 0.50))["status"] == "proceed to confirmation"
 
 
 def test_clear_loss_keeps_current():
@@ -57,15 +57,15 @@ def test_no_difference_is_not_yet():
 def test_switchback_reads_weeks():
     d = decide_ownership(make_logs(40000, 0.62, 0.50, "switchback"))
     assert d["estimates"]["contacted"]["periods"] == [4, 4]
-    assert d["status"] == "roll out with review"
+    assert d["status"] == "proceed to confirmation"
 
 
 def test_script_needs_collections_not_quotes():
     # more quotes, no collections recorded at all: never rolls out on quotes alone
     d = decide_script(make_logs(20000, 0.60, 0.50, q=0.6))
     assert d["estimates"]["quoted"]["lo"] > 1
-    assert d["status"] != "roll out with review"
-    assert d["naive"] == "roll out with review"
+    assert d["status"] != "proceed to confirmation"
+    assert d["naive"] == "roll out"
 
 
 def test_mh_single_stratum_equals_plain_ratio():
@@ -107,3 +107,48 @@ def test_sample_ratio_mismatch_is_inadequate():
     logs["design"]["ownership"] = dict(kind="lead_random", share=0.5)
     d = decide_ownership(logs)
     assert d["status"] == "comparison inadequate" and d["sample_ratio_p"] < 0.001
+
+
+def _with_collections(logs, owner_events, current_events):
+    L = logs["leads"]
+    q = logs["attempts"][logs["attempts"].outcome == "quote"].lead_id
+    own = [i for i in q if L.single_owner[i]][:owner_events]
+    cur = [i for i in q if not L.single_owner[i]][:current_events]
+    ids = own + cur
+    arr = L.set_index("lead_id").arrival_min
+    logs["policies"] = pd.DataFrame(dict(lead_id=ids, handler="A", issued_min=[int(arr[i]) + 1000 for i in ids],
+                                         premium_annual_mxn=9000.0, payment_on_call=False,
+                                         first_payment_collected=True))
+    return logs
+
+
+def test_zero_collections_in_owner_arm_trigger_the_guardrail():
+    for cur in (10, 21, 200):
+        d = decide_ownership(_with_collections(make_logs(20000, 0.60, 0.50), 0, cur))
+        assert d["estimates"]["contacted"]["lo"] > 1
+        assert d["guardrail"] == "collections" and d["status"] == "not yet", cur
+
+
+def test_zero_collections_in_both_arms_is_explicitly_unresolved():
+    d = decide_ownership(_with_collections(make_logs(20000, 0.60, 0.50), 0, 0))
+    assert d["estimates"]["collected"]["resolved"] is False
+    assert d["guardrail"] == "collections unresolved"
+    assert "unresolved" in d["why"]
+
+
+def test_zero_collections_in_current_arm_only_does_not_block():
+    d = decide_ownership(_with_collections(make_logs(20000, 0.60, 0.50), 12, 0))
+    assert d["estimates"]["collected"]["resolved"] and d["guardrail"] is None
+    assert d["status"] == "proceed to confirmation"
+
+
+def test_contacts_after_the_14_day_horizon_do_not_count():
+    logs = make_logs(20000, 0.60, 0.50)
+    a = logs["attempts"]
+    L = logs["leads"].set_index("lead_id")
+    late = a.outcome.isin(["contact", "quote"]) & L.single_owner.reindex(a.lead_id).to_numpy()
+    a.loc[late, "t_min"] = a.loc[late, "t_min"] + 20 * 1440   # owner-arm contacts now land on day 20
+    logs["meta"]["extracted_at_min"] = int(a.t_min.max())
+    d = decide_ownership(logs)
+    assert d["estimates"]["contacted"]["hi"] < 1
+    assert d["status"] == "keep current"

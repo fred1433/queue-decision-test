@@ -33,7 +33,8 @@ class World:
     - "neutral": the lead was cooling anyway; the owner would have made the same dial (no effect)
     - "rescue":  the lead was cooling anyway, and the other center's dial is a real extra chance
                  that an owner's normal cadence does not replace (coordination hurts)
-    Held-out variants change mechanisms the engine was never tuned on.
+    Other variants (harm that wears off, overlaps on hard-to-reach leads, tighter capacity) were written
+    with the bench; they are harder cases, not an independent hold-out.
     """
     name: str = "harm"
     overlap: str = "harm"
@@ -247,6 +248,12 @@ def simulate(weeks: int = 8, seed: int = 0, policy: Policy | None = None, world:
                         c2 = others[rng.integers(len(others))] if others else None
                         agent2 = roster[c2][rng.integers(len(roster[c2]))] if c2 else None
                         t2 = t + rng.uniform(1, 20)
+                        # a second call must fit the operating window and the attempt limit
+                        close = (w * 7 + day) * 1440 + (T.SLOTS[-1] + 1) * 60
+                        if t2 >= close or attempts[i] + 2 > policy.max_attempts:
+                            c2 = None
+                        else:
+                            hour2 = int((t2 % 1440) // 60)
                     if not overlap or c2 is None:
                         settle(i, t, outcome, c)
                         continue
@@ -255,12 +262,12 @@ def simulate(weeks: int = 8, seed: int = 0, policy: Policy | None = None, world:
                         if outcome == "no_answer":
                             settle(i, t, outcome, c)
                             if active[i]:
-                                hm2, out2 = dial(i, t2, day, hour, c2, agent2)
+                                hm2, out2 = dial(i, t2, day, hour2, c2, agent2)
                                 cap[c2] -= hm2
                                 used += hm2
                                 settle(i, t2, out2, c2)
                         else:
-                            log(i, t2, day, hour, c2, agent2, "no_answer", T.HANDLE_MIN["no_answer"], int(attempts[i]) + 2)
+                            log(i, t2, day, hour2, c2, agent2, "no_answer", T.HANDLE_MIN["no_answer"], int(attempts[i]) + 2)
                             cap[c2] -= T.HANDLE_MIN["no_answer"]
                             settle(i, t, outcome, c)
                             attempts[i] += 1
@@ -272,7 +279,7 @@ def simulate(weeks: int = 8, seed: int = 0, policy: Policy | None = None, world:
                         continue                              # no second dial, no cooling
                     if world.overlap == "neutral":
                         if outcome == "no_answer" and active[i]:
-                            hm2, out2 = dial(i, t2, day, hour, c, agent)   # the owner makes that dial
+                            hm2, out2 = dial(i, t2, day, hour2, c, agent)   # the owner makes that dial
                             cap[c] -= hm2
                             used += hm2
                             settle(i, t2, out2, c)
@@ -314,7 +321,7 @@ def simulate(weeks: int = 8, seed: int = 0, policy: Policy | None = None, world:
     policies = policies.sort_values(["issued_min", "lead_id"]).reset_index(drop=True)
 
     staff_rows = []
-    for w in range(weeks):
+    for w in range(weeks + tail_weeks):
         for day in range(T.OPEN_DAYS):
             for hour in T.SLOTS:
                 for c in HANDLERS:
@@ -332,20 +339,40 @@ def simulate(weeks: int = 8, seed: int = 0, policy: Policy | None = None, world:
                   script=(dict(kind="lead_random", unit="lead", share=policy.script_share) if 0 < policy.script_share < 1
                           else dict(kind="all" if policy.script_share >= 1 else "off")))
     logs = dict(leads=lead_log, attempts=attempts_df, policies=policies, staffing=staffing_df, spend=spend,
-                agents=agents, design=design, meta=dict(weeks=weeks, ai_cost_per_min=T.AI["cost_per_min"]))
+                agents=agents, design=design, meta=dict(weeks=weeks, dial_weeks=weeks + tail_weeks,
+                          extracted_at_min=(weeks + tail_weeks) * WEEK_MIN,
+                          ai_cost_per_min=T.AI["cost_per_min"]))
     hidden = pd.DataFrame(dict(lead_id=np.arange(n), reach=reach, intent=intent, overlaps=overlaps,
                                burn=burn, premium=premium))
     return logs, hidden
 
 
-def weekly_totals(logs) -> dict:
-    """Per-week averages of the funnel and the costs, from logs only."""
-    w = logs["meta"]["weeks"]
+HORIZON_MIN = 14 * 1440
+
+
+def violations(logs) -> dict:
+    """Calls outside the operating window, and leads called more than the attempt limit."""
     a = logs["attempts"]
+    minute = a.t_min % 1440
+    dow = (a.t_min // 1440) % 7
+    outside = (dow >= T.OPEN_DAYS) | (minute < T.SLOTS[0] * 60) | (minute >= (T.SLOTS[-1] + 1) * 60)
+    per_lead = a.groupby("lead_id").size()
+    return dict(calls_outside_window=int(outside.sum()), leads_over_limit=int((per_lead > T.MAX_ATTEMPTS).sum()))
+
+
+def weekly_totals(logs) -> dict:
+    """Per enrolled week, from logs only. Outcomes count within each lead's first 14 days (the same
+    horizon the decision code uses); staffing cost is averaged over every week with dialing."""
+    w = logs["meta"]["weeks"]
+    dw = logs["meta"].get("dial_weeks", w)
+    arr = logs["leads"].set_index("lead_id").arrival_min
+    a = logs["attempts"]
+    a = a[(a.t_min - arr.reindex(a.lead_id).to_numpy()) <= HORIZON_MIN]
     p = logs["policies"]
+    p = p[(p.issued_min - arr.reindex(p.lead_id).to_numpy()) <= HORIZON_MIN]
     st = logs["staffing"]
     human_cost = float((st.agents * st.rate_mxn_per_hour).sum())
-    ai_min = float(a.loc[a.handler == "AI", "handle_min"].sum())
+    ai_min = float(logs["attempts"].loc[logs["attempts"].handler == "AI", "handle_min"].sum())
     contacted = a.loc[a.outcome.isin(["contact", "quote"]), "lead_id"].nunique()
     return dict(
         leads=len(logs["leads"]) / w,
@@ -354,6 +381,6 @@ def weekly_totals(logs) -> dict:
         issued=len(p) / w,
         collected=float(p.first_payment_collected.sum()) / w,
         ad_spend_mxn=float(logs["spend"].spend_mxn.sum()) / w,
-        call_center_cost_mxn=(human_cost + ai_min * logs["meta"]["ai_cost_per_min"]) / w,
-        agent_minutes=float(a.loc[a.handler != "AI", "handle_min"].sum()) / w,
+        call_center_cost_mxn=(human_cost + ai_min * logs["meta"]["ai_cost_per_min"]) / dw,
+        agent_minutes=float(logs["attempts"].loc[logs["attempts"].handler != "AI", "handle_min"].sum()) / w,
     )

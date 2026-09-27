@@ -27,7 +27,7 @@ from concurrent.futures import ProcessPoolExecutor
 import numpy as np
 
 from .decide import decide_ownership, decide_script
-from .simulate import Policy, World, simulate, weekly_totals
+from .simulate import Policy, World, simulate, violations, weekly_totals
 from .stats import wilson
 
 HARM = World("harm", "harm")
@@ -59,7 +59,8 @@ CASES = [
 ]
 
 WEEKS = 8
-SHIP = "roll out with review"
+SHIP = "proceed to confirmation"
+NAIVE_SHIP = "roll out"
 ABSTAIN = {"not yet", "test only", "comparison inadequate"}
 
 
@@ -75,7 +76,7 @@ def _rep(args):
     key = "contacted" if which == "ownership" else "collected"
     e = est.get(key, {}) if isinstance(est.get(key), dict) else {}
     return dict(case=cid, seed=seed, weeks=weeks, status=d["status"], naive=d["naive"],
-                rr=e.get("rr"), lo=e.get("lo"), hi=e.get("hi"))
+                rr=e.get("rr"), lo=e.get("lo"), hi=e.get("hi"), guardrail=d.get("guardrail"), **violations(logs))
 
 
 def _oracle(args):
@@ -147,7 +148,9 @@ def run(n_reps=40, n_oracle=30, workers=8, seed0=20_000, durations=(4, 8, 16), n
         def loss(chooser):
             return float(np.mean([best - (value if chooser(r) == SHIP else 0.0) for r in rs]))
 
-        covered = [r for r in rs if r["lo"] is not None and np.isfinite(r["lo"] or np.nan)]
+        def finite(v):
+            return v is not None and np.isfinite(float(v))
+        covered = [r for r in rs if finite(r["lo"]) and finite(r["hi"])]
         cov = (sum(1 for r in covered if r["lo"] <= truth_rr <= r["hi"]) / len(covered)) if covered else None
         out_cases.append(dict(
             id=cid, label=label, group=group, decision=which, world=world.name, design=pol,
@@ -155,12 +158,16 @@ def run(n_reps=40, n_oracle=30, workers=8, seed0=20_000, durations=(4, 8, 16), n
             engine=dict(rollout=rate(lambda r: r["status"] == SHIP), keep=rate(lambda r: r["status"] == "keep current"),
                         abstain=rate(lambda r: r["status"] in ABSTAIN),
                         statuses={s: sum(1 for r in rs if r["status"] == s) for s in sorted({r["status"] for r in rs})}),
-            naive=dict(rollout=rate(lambda r: r["naive"] == SHIP)),
+            naive=dict(rollout=rate(lambda r: r["naive"] == NAIVE_SHIP)),
+            guardrails={g: sum(1 for r in rs if r.get("guardrail") == g) for g in ("collections", "collections unresolved", "sample ratio")},
+            constraint_violations=dict(calls_outside_window=int(sum(r["calls_outside_window"] for r in rs)),
+                                       leads_over_limit=int(sum(r["leads_over_limit"] for r in rs))),
             harmful_world=harmful_world,
             harmful_recommendation=dict(engine=rate(lambda r: r["status"] == SHIP and harmful_world),
-                                        naive=rate(lambda r: r["naive"] == SHIP and harmful_world)),
+                                        naive=rate(lambda r: r["naive"] == NAIVE_SHIP and harmful_world)),
             coverage=dict(rate=cov, n=len(covered), estimand="contacted leads, full rollout" if which == "ownership" else "collected, full rollout"),
-            loss=dict(engine=loss(lambda r: r["status"]), hold=loss(lambda r: "keep current"), naive=loss(lambda r: r["naive"]),
+            loss=dict(engine=loss(lambda r: r["status"]), hold=loss(lambda r: "keep current"),
+                      naive=loss(lambda r: SHIP if r["naive"] == NAIVE_SHIP else "keep current"),
                       unit=unit),
         ))
 
@@ -168,7 +175,7 @@ def run(n_reps=40, n_oracle=30, workers=8, seed0=20_000, durations=(4, 8, 16), n
     for cid in ("beneficial", "harmful"):
         for w in durations:
             rs = [r for r in times if r["case"] == f"time_{cid}_{w}"]
-            cnt = {s: sum(1 for r in rs if r["status"] == s) for s in ["roll out with review", "keep current", "not yet"]}
+            cnt = {s: sum(1 for r in rs if r["status"] == s) for s in [SHIP, "keep current", "not yet"]}
             over_time.append(dict(case=cid, weeks=w, n=len(rs), **cnt))
 
     return dict(n_reps=n_reps, n_oracle=n_oracle, weeks=WEEKS, seconds=round(time.time() - t0),

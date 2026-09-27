@@ -112,9 +112,10 @@ def decision_record(own):
         object_type="AllocationDecision",
         decision_id="next-contact-owner-001",
         evidence_and_choice=dict(
-            snapshot="synthetic, seed 2026, 8 weeks", cutoff="end of week 8", policy_version="multi-center retries v0",
+            snapshot="synthetic, seed 2026: 8 weeks of enrollment, then 14 days of follow-up",
+            cutoff="extraction at the end of week 10; each lead read on its first 14 days", policy_version="multi-center retries v0",
             eligible_population="every new lead, all sources, all centers",
-            baseline_metric="leads reached per lead", proposed_change="one next-contact owner per lead across centers",
+            baseline_metric="leads reached per lead", proposed_change="one center owns the next attempt; other centers cannot make a competing call; ownership may transfer before a later attempt",
             expected_effect="unknown sign: not identified from history", assumptions=["overlap mechanism unknown"],
         ),
         assignment_and_execution=dict(

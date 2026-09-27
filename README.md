@@ -49,5 +49,6 @@ cd engine && ../.venv/bin/python -m pytest tests -q
 
 ## History
 
-Replayed from the working repository: only the folders above are kept, the package's working name was
-replaced by `queuesim`, author addresses by a no-reply address. Dates and order are original.
+Replayed from the working repository: only the folders above are kept (the page's own source is not);
+the package's working name and a few words about where the scale came from were redacted; author
+addresses were replaced by a no-reply address. Code, numbers, dates and order are otherwise original.
